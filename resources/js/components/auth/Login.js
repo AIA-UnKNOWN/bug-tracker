@@ -57,6 +57,7 @@ const Login = ({ onSwitchRegisterTab }) => {
               id: data.user.id,
               name: data.user.name,
               email: data.user.email,
+              profilePicture: '',
               isAuthenticated: true
             }
           }));

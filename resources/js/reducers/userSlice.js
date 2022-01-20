@@ -8,6 +8,7 @@ export const userSlice = createSlice({
       id: 0,
       name: '',
       email: '',
+      profilePicture: '',
       isAuthenticated: false
     }
   },

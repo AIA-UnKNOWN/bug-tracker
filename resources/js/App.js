@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateUser, authenticate } from './reducers/userSlice';
 
 import AuthPage from './components/auth/AuthPage';
+import Dashboard from './components/Dashboard';
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
             id: data.user.id,
             email: data.user.email,
             name: data.user.name,
+            profilePicture: '',
             isAuthenticated: true
           }
         }));
@@ -49,9 +51,7 @@ const App = () => {
   );
 
   return (
-    <div className="">
-      <h1>Welcome back {user.name}!</h1>
-    </div>
+    <Dashboard />
   );
 }
 
