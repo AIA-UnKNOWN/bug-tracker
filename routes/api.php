@@ -22,3 +22,6 @@ Route::post('/register', [AuthController::class, 'register'])
 Route::get('/logout', [AuthController::class, 'logout'])
     ->middleware('auth:sanctum')
     ->name('logout');
+Route::get('/user', function (Request $request) {
+    return response()->json(['user' => $request->user()]);
+})->middleware('auth:sanctum');
