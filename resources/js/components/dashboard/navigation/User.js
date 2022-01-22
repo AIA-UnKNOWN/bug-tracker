@@ -15,7 +15,7 @@ const User = () => {
             alt="Profile Picture"
           />
         </div>
-        <span className="block text-[20px] text-center mt-8 font-medium">{user.name}</span>
+        <span className="block text-[20px] text-center mt-8 font-medium">{user.firstname} {user.lastname}</span>
       </div>
     </div>
   );
