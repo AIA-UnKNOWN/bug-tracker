@@ -55,7 +55,8 @@ const Login = ({ onSwitchRegisterTab }) => {
           dispatch(updateUser({
             user: {
               id: data.user.id,
-              name: data.user.name,
+              firstname: data.user.first_name,
+              lastname: data.user.last_name,
               email: data.user.email,
               profilePicture: '',
               isAuthenticated: true

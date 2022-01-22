@@ -35,7 +35,8 @@ const App = () => {
           user: {
             id: data.user.id,
             email: data.user.email,
-            name: data.user.name,
+            firstname: data.user.first_name,
+            lastname: data.user.last_name,
             profilePicture: '',
             isAuthenticated: true
           }

@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 const Register = ({ onSwtichLoginTab }) => {
   const [inputs, setInputs] = useState({
-    name: '',
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -14,7 +15,8 @@ const Register = ({ onSwtichLoginTab }) => {
     const formErrors = {};
     const suffixMessage = 'field is required';
 
-    if (inputs.name === '') formErrors.name = `Name ${suffixMessage}`;
+    if (inputs.firstname === '') formErrors.firstname = `Firstname ${suffixMessage}`;
+    if (inputs.lastname === '') formErrors.lastname = `Lastname ${suffixMessage}`;
     if (inputs.email === '') formErrors.email = `Email ${suffixMessage}`;
     const validEmailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (inputs.email !== '' && !validEmailFormat.test(inputs.email)) formErrors.email = `Please enter a valid email`;
@@ -38,7 +40,8 @@ const Register = ({ onSwtichLoginTab }) => {
           'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
         },
         body: JSON.stringify({
-          name: inputs.name,
+          firstname: inputs.firstname,
+          lastname: inputs.lastname,
           email: inputs.email,
           password: inputs.password,
           password_confirmation: inputs.confirmPassword
@@ -60,19 +63,35 @@ const Register = ({ onSwtichLoginTab }) => {
         </div>
 
         <div className="pt-4 pb-6">
-          <div className="w-fit m-auto mb-2">
-            <label className="text-[12px]" htmlFor="name">Name</label>
-            <input
-              className="block bg-light-gray w-[350px] leading-[40px] rounded-md outline-none px-2 text-[15px]"
-              type="text"
-              name="name"
-              id="name"
-              value={inputs.name}
-              onChange={event => setInputs(data => ({ ...data, name: event.target.value }))}
-            />
-            {errors.name && (
-              <span className="text-[12px] text-red">{errors.name}</span>
-            )}
+          <div className="mb-2 flex justify-center">
+            <div className="w-[160px] mr-[15px]">
+              <label className="inline-block w-full text-[12px]" htmlFor="name">Firstname</label>
+              <input
+                className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
+                type="text"
+                name="firstname"
+                id="firstname"
+                value={inputs.firstname}
+                onChange={event => setInputs(data => ({ ...data, firstname: event.target.value }))}
+              />
+              {errors.firstname && (
+                <span className="text-[12px] text-red">{errors.firstname}</span>
+              )}
+            </div>
+            <div className="w-[160px] ml-[15px]">
+              <label className="inline-block w-full text-[12px] text-right" htmlFor="name">Lastname</label>
+              <input
+                className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
+                type="text"
+                name="lastname"
+                id="lastname"
+                value={inputs.lastname}
+                onChange={event => setInputs(data => ({ ...data, lastname: event.target.value }))}
+              />
+              {errors.lastname && (
+                <span className="text-[12px] text-red">{errors.lastname}</span>
+              )}
+            </div>
           </div>
           <div className="w-fit m-auto mb-2">
             <label className="text-[12px]" htmlFor="email">Email</label>
