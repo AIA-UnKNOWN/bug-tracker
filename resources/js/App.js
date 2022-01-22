@@ -14,11 +14,9 @@ const App = () => {
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    if (token) {
-      getCurrentUser(token);
-    }
+    if (token) getCurrentUser(token);
   }, []);
-
+  
   const getCurrentUser = token => {
     fetch('/api/user', {
       method: 'GET',
@@ -37,7 +35,7 @@ const App = () => {
             email: data.user.email,
             firstname: data.user.first_name,
             lastname: data.user.last_name,
-            profilePicture: '',
+            profilePicture: data.user.profile_picture,
             isAuthenticated: true
           }
         }));

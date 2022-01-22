@@ -23,5 +23,5 @@ export const userSlice = createSlice({
   }
 });
 
-export const { updateUser, authenticate } = userSlice.actions;
+export const { updateUser, updateProfilePicture } = userSlice.actions;
 export default userSlice.reducer;

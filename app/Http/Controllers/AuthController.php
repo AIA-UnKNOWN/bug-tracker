@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\ProfilePicture;
 use Hash;
 
 class AuthController extends Controller
@@ -23,7 +24,10 @@ class AuthController extends Controller
             ]);
         }
 
-        $user = User::where('email', $request->get('email'))->first();
+        $user = User::select('users.*', 'profile_pictures.profile_picture')
+                    ->join('profile_pictures', 'profile_pictures.user_id', '=', 'users.id')
+                    ->where('email', $request->get('email'))
+                    ->first();
         $token = $user->createToken('auth-token')->plainTextToken;
         return response()->json([
             'message' => 'success',
@@ -48,8 +52,24 @@ class AuthController extends Controller
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
+        $profilePicture = new ProfilePicture;
+        $profilePicture->user_id = $user->id;
+        $profilePicture->save();
+
         return response()->json([
             'message' => 'registered'
+        ]);
+    }
+
+    function getCurrentUser(Request $request)
+    {
+        $id = $request->user()->id;
+        $user = User::find($id)
+                    ->select('users.*', 'profile_pictures.profile_picture')
+                    ->join('profile_pictures', 'profile_pictures.user_id', '=', 'users.id')
+                    ->first();
+        return response()->json([
+            'user' => $user
         ]);
     }
 
