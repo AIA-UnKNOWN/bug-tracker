@@ -15,6 +15,9 @@ export const userSlice = createSlice({
   reducers: {
     updateUser: (state, action) => {
       state.user = action.payload.user;
+    },
+    updateProfilePicture: (state, action) => {
+      state.user.profilePicture = action.payload.profilePicture;
     }
   }
 });

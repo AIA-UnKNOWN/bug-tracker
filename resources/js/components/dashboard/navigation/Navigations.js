@@ -1,5 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faUsers, faProjectDiagram, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../../reducers/userSlice';
+import { switchTab } from '../../../reducers/tabSlice';
 
 
 const Navigations = () => {
@@ -7,22 +10,22 @@ const Navigations = () => {
 
   const links = [
     {
-      icon: 'fas fa-user',
+      icon: faUser,
       name: 'Profile',
-      onSwitch: () => console.log('Profile')
+      onSwitch: () => dispatch(switchTab({ currentTab: 'profile' }))
     },
     {
-      icon: 'fas fa-users',
+      icon: faUsers,
       name: 'Friends',
-      onSwitch: () => console.log('Friends')
+      onSwitch: () => dispatch(switchTab({ currentTab: 'friends' }))
     },
     {
-      icon: 'fas fa-project-diagram',
+      icon: faProjectDiagram,
       name: 'Projects',
-      onSwitch: () => console.log('Projects')
+      onSwitch: () => dispatch(switchTab({ currentTab: 'projects' }))
     },
     {
-      icon: 'fas fa-sign-out-alt',
+      icon: faSignOutAlt,
       name: 'Logout',
       onSwitch: () => logout()
     }
@@ -50,8 +53,8 @@ const Navigations = () => {
             key={link.name}
             onClick={link.onSwitch}
           >
-            <div className="flex justify-center items-center w-[20px] h-207px] mx-5">
-              <i className={link.icon}></i>
+            <div className="flex justify-center items-center w-[20px] h-207px] mx-5 text-black">
+              <FontAwesomeIcon icon={link.icon} />
             </div>
             <span className="text-[17px] font-medium">{link.name}</span>
           </div>
