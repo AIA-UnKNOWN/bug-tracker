@@ -27,21 +27,36 @@ const Navigations = () => {
     {
       icon: faSignOutAlt,
       name: 'Logout',
-      onSwitch: () => logout()
+      onSwitch: () => logout(sessionStorage.getItem('token'))
     }
   ];
 
-  const logout = () => {
-    sessionStorage.removeItem('token');
-    dispatch(updateUser({
-      user: {
-        id: 0,
-        name: '',
-        email: '',
-        profilePicture: '',
-        isAuthenticated: false
+  const logout = token => {
+    fetch('/api/user/logout', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       }
-    }));
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'logged out') {
+          sessionStorage.removeItem('token');
+          dispatch(updateUser({
+            user: {
+              id: 0,
+              name: '',
+              email: '',
+              profilePicture: '',
+              isAuthenticated: false
+            }
+          }));
+        }
+      })
+      .catch(error => console.log(error));
   }
 
   return (

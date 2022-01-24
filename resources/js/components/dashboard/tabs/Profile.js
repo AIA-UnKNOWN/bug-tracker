@@ -54,7 +54,7 @@ const Profile = () => {
           <div className="relative w-[200px] h-[200px] rounded-[50%] ml-14">
             <img
               className="w-full h-full object-cover rounded-[50%]"
-              src={user.profilePicture !== '' ? user.profilePicture : defaultPicture}
+              src={user.profilePicture ?? defaultPicture}
               alt=""
             />
             <div className="absolute right-4 bottom-4">

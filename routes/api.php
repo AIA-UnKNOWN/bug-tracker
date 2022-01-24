@@ -20,14 +20,14 @@ Route::post('/login', [AuthController::class, 'login'])
     ->name('login');
 Route::post('/register', [AuthController::class, 'register'])
     ->name('register');
-Route::get('/logout', [AuthController::class, 'logout'])
-    ->middleware('auth:sanctum')
-    ->name('logout');
     
 Route::prefix('/user')->group(function () {
     Route::get('/', [AuthController::class, 'getCurrentUser'])
         ->middleware('auth:sanctum')
         ->name('user');
+    Route::post('/logout', [AuthController::class, 'logout'])
+        ->middleware('auth:sanctum')
+        ->name('logout');
     Route::put('/profile-picture/update', ProfilePicture\UpdateController::class)
         ->middleware('auth:sanctum')
         ->name('profile-picture-update');

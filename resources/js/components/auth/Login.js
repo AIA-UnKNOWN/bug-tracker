@@ -52,6 +52,7 @@ const Login = ({ onSwitchRegisterTab }) => {
             setLoginError('Invalid username or password');
             return;
           };
+          sessionStorage.setItem('token', data.token);
           dispatch(updateUser({
             user: {
               id: data.user.id,
@@ -62,7 +63,6 @@ const Login = ({ onSwitchRegisterTab }) => {
               isAuthenticated: true
             }
           }));
-          sessionStorage.setItem('token', data.token);
         })
         .catch(error => console.log(error));
     });

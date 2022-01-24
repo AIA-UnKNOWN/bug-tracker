@@ -27,8 +27,12 @@ const App = () => {
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       }
     })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) return;
+        return response.json();
+      })
       .then(data => {
+        if (!data) return;
         dispatch(updateUser({
           user: {
             id: data.user.id,

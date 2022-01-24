@@ -11,7 +11,7 @@ const User = () => {
         <div className="w-[150px] h-[150px] overflow-hidden rounded-[50%]">
           <img
             className="w-full h-full object-cover"
-            src={user.profilePicture.length > 0 ? user.profilePicture : defaultPicture}
+            src={user.profilePicture ?? defaultPicture}
             alt="Profile Picture"
           />
         </div>
