@@ -8,7 +8,7 @@ const User = () => {
   return (
     <div className="flex justify-center items-center w-full h-[300px] border-b border-light-black">
       <div className="mt-5">
-        <div className="w-[150px] h-[150px] overflow-hidden rounded-[50%]">
+        <div className="mx-auto w-[150px] h-[150px] overflow-hidden rounded-[50%]">
           <img
             className="w-full h-full object-cover"
             src={user.profilePicture ?? defaultPicture}
