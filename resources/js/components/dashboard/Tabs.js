@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Profile from './tabs/Profile';
+import Projects from './tabs/Projects';
 
 
 const Tabs = () => {
@@ -15,7 +16,7 @@ const Tabs = () => {
         return (<h1>Friends</h1>);
         break;
       default:
-        return (<h1>Projects</h1>);
+        return (<Projects />);
     }
   }
 

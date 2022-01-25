@@ -45,7 +45,7 @@ const Profile = () => {
   
   return (
     <div className="px-[50px] py-[30px]">
-      <p className="text-[50px] font-medium  mb-10">
+      <p className="text-[50px] font-medium mb-10">
         Profile
       </p>
       

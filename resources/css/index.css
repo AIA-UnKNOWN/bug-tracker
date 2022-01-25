@@ -6,4 +6,13 @@
 
 * {
     font-family: 'Montserrat', sans-serif !important;
+    box-sizing: border-box;
+}
+
+@layer utilities {
+    .custom-placeholder::placeholder {
+        font-size: 13px;
+        color: #4F4F4F;
+        font-weight: 500;
+    }
 }

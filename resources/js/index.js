@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import userSlice from './reducers/userSlice';
 import tabSlice from './reducers/tabSlice';
+import projectsSlice from './reducers/projectsSlice';
 
 import App from './App';
 
@@ -12,7 +13,8 @@ import App from './App';
 const store = configureStore({
   reducer: {
     user: userSlice,
-    tab: tabSlice
+    tab: tabSlice,
+    projects: projectsSlice
   }
 });
 
