@@ -28,6 +28,7 @@ const Project = ({ id, onGoBack }) => {
           </div>
 
           <Issues />
+          
         </div>
       </div>
     </div>

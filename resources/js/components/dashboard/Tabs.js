@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import Profile from './tabs/Profile';
+import Friends from './tabs/Friends';
 import Projects from './tabs/Projects';
 
 
@@ -13,7 +14,7 @@ const Tabs = () => {
         return (<Profile />);
         break;
       case 'friends':
-        return (<h1>Friends</h1>);
+        return (<Friends />);
         break;
       default:
         return (<Projects />);

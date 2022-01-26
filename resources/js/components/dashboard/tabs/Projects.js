@@ -7,7 +7,7 @@ import Project from './projects/Project';
 const Projects = () =>  {
   const projects = useSelector(state => state.projects.projects);
 
-  const [viewMode, setViewMode] = useState(true); // default false
+  const [viewMode, setViewMode] = useState(false);
   const [projectId, setProjectId] = useState(0);
 
   const viewProject = id => {

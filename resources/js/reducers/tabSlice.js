@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const tabSlice = createSlice({
   name: 'tab',
   initialState: {
-    currentTab: 'projects'
+    currentTab: 'friends'
   },
   reducers: {
     switchTab: (state, action) => {
