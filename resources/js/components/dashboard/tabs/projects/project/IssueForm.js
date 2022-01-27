@@ -60,7 +60,7 @@ const IssueForm = () => {
               id="min"
               placeholder="Min"
             />
-            <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
+            <div className="w-[30px] h-[30px] flex justify-center items-center">
               <FontAwesomeIcon icon={faCalendarAlt} color="#4F4F4F" />
             </div>
           </div>
@@ -74,7 +74,7 @@ const IssueForm = () => {
               id="max"
               placeholder="Max"
             />
-            <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
+            <div className="w-[30px] h-[30px] flex justify-center items-center">
               <FontAwesomeIcon icon={faCalendarAlt} color="#4F4F4F" />
             </div>
           </div>

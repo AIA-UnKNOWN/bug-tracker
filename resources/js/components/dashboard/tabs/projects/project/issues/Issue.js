@@ -16,8 +16,8 @@ const Issue = ({ issue, onChangeIssueName }) => {
           <p className="text-[17px] font-medium pr-8">{issue.name}</p>
           <span className="block text-[10px]">Date Issued: {issue.createdAt}</span>
         </div>
-        <div className={`flex items-center h-[25px] bg-${issue.status === 'open' ? 'light-green' : 'light-red'} px-2 rounded-full`}>
-          <span className={`capitalize font-medium text-[12px] pr-2 text-${issue.status === 'open' ? 'dark-green' : 'dark-red'}`}>
+        <div className={`flex items-center h-[25px] ${issue.status === 'open' ? 'bg-light-green' : 'bg-light-red'} px-2 rounded-full`}>
+          <span className={`capitalize font-medium text-[12px] pr-2 ${issue.status === 'open' ? 'text-dark-green' : 'text-dark-red'}`}>
             {issue.status}
           </span>
           <FontAwesomeIcon
