@@ -16,10 +16,10 @@ const Friends = () => {
   const renderPage = tab => {
     switch (tab) {
       case tabs[1]:
-        return (<FriendRequests />);
+        return (<FriendRequests data={friendRequests} />);
         break;
       default:
-        return (<FriendsList />);
+        return (<FriendsList data={friends} />);
     }
   }
   
@@ -29,7 +29,7 @@ const Friends = () => {
         Friends
       </p>
 
-      <div>
+      <div className="flex flex-col flex-1">
 
         <SearchFriend />
 

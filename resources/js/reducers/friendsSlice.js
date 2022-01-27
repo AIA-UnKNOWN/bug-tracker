@@ -7,16 +7,19 @@ const friendsSlice = createSlice({
   initialState: {
     friends: [
       {
+        id: 1,
         name: 'John Doe',
         type: 'Software Developer',
         profilePicture: samplePic
       },
       {
+        id: 2,
         name: 'Mark Houston',
         type: 'Frontend Developer',
         profilePicture: samplePic
       },
       {
+        id: 3,
         name: 'Xavier San Lorenzo',
         type: 'Full Stack Developer',
         profilePicture: samplePic
@@ -24,6 +27,7 @@ const friendsSlice = createSlice({
     ],
     friendRequests: [
       {
+        id: 4,
         name: 'Harry Potter',
         type: 'Backend Developer',
         profilePicture: samplePic
