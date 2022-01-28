@@ -1,25 +1,19 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import useProjects from './useProjectsHook';
 import Project from './projects/Project';
+import ProjectItem from './projects/ProjectItem';
 
 
 const Projects = () =>  {
-  const projects = useSelector(state => state.projects.projects);
-
-  const [viewMode, setViewMode] = useState(false);
-  const [projectId, setProjectId] = useState(0);
-
-  const viewProject = id => {
-    setProjectId(id);
-    setViewMode(true);
-  }
+  const { projects, viewMode, setViewMode, projectId, viewProject, getProjects } = useProjects();
 
   if (viewMode) {
     return (
       <Project
         id={projectId}
-        onGoBack={() => setViewMode(false)}
+        onGoBack={() => {
+          setViewMode(false);
+          getProjects();
+        }}
       />
     );
   }
@@ -31,23 +25,16 @@ const Projects = () =>  {
       </p>
 
       <div className="flex flex-col flex-1">
+
         {projects.length !== 0 ? (
 
           <div className="h-full">
             {projects.map(project => (
-              <div
+              <ProjectItem
                 key={project.id}
-                className="flex justify-between items-center w-[400px] h-[100px] border-l-[5px] border-l-purple px-[25px] shadow-md mb-5 cursor-pointer"
-                onClick={() => viewProject(project.id)}
-              >
-                <span className="font-medium text-[25px]">{project.name}</span>
-                <div className="flex items-center w-20">
-                  <span className="text-[13px] font-semibold mr-2">Issues</span>
-                  <div className="flex justify-center items-center w-[30px] h-[30px] bg-gray rounded-[50%]">
-                    <span className="text-[13px] font-semibold text-white">{project.issues}</span>
-                  </div>
-                </div>
-              </div>
+                projectData={project}
+                onViewProject={projectId => viewProject(projectId)}
+              />
             ))}
           </div>
 
@@ -58,6 +45,7 @@ const Projects = () =>  {
           </div>
 
         )}
+
       </div>
     </div>
   );

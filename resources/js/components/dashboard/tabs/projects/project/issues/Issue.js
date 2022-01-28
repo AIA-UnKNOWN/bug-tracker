@@ -1,33 +1,41 @@
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faExclamationCircle, faEllipsisH, faPen, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
+import useIssue from './useIssueHook';
 
-const Issue = ({ issue, onChangeIssueName }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+
+const Issue = ({ issue }) => {
+  const {
+    issueName,
+    setIssueName,
+    assigneeId,
+    setAssigneeId,
+    issueStatus,
+    setIssueStatus,
+    isCollapsed,
+    setIsCollapsed,
+    updateIssue
+  } = useIssue(issue);
 
   return (
-    <div
-      key={issue.id}
-      className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4"
-    >
+    <div className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4">
       <div className="w-full min-h-[110px] flex justify-between items-center py-4 px-8">
         <div>
-          <p className="text-[17px] font-medium pr-8">{issue.name}</p>
-          <span className="block text-[10px]">Date Issued: {issue.createdAt}</span>
+          <p className="text-[17px] font-medium pr-8">{issueName}</p>
+          <span className="block text-[10px]">Date Issued: {issue.created_at || 'N/A'}</span>
         </div>
-        <div className={`flex items-center h-[25px] ${issue.status === 'open' ? 'bg-light-green' : 'bg-light-red'} px-2 rounded-full`}>
-          <span className={`capitalize font-medium text-[12px] pr-2 ${issue.status === 'open' ? 'text-dark-green' : 'text-dark-red'}`}>
-            {issue.status}
+        <div className={`flex items-center h-[25px] ${issueStatus === 'open' ? 'bg-light-green' : 'bg-light-red'} px-2 rounded-full`}>
+          <span className={`capitalize font-medium text-[12px] pr-2 ${issueStatus === 'open' ? 'text-dark-green' : 'text-dark-red'}`}>
+            {issueStatus}
           </span>
           <FontAwesomeIcon
-            icon={issue.status === 'open' ? faCheckCircle : faExclamationCircle}
-            color={issue.status === 'open' ? "#275C2C" : "#8D2323"}
+            icon={issueStatus === 'open' ? faCheckCircle : faExclamationCircle}
+            color={issueStatus === 'open' ? "#275C2C" : "#8D2323"}
           />
         </div>
       </div>
 
-      {issue.status === 'open' && isCollapsed && (
+      {issueStatus === 'open' && isCollapsed && (
         <div className="w-[460px] mx-auto mb-3">
 
           <div className="w-full h-[40px] bg-light-gray mx-auto rounded-md mb-3">
@@ -35,8 +43,8 @@ const Issue = ({ issue, onChangeIssueName }) => {
               <input
                 className="flex flex-1 bg-light-gray outline-none custom-placeholder"
                 type="text"
-                value={issue.name}
-                onChange={e => onChangeIssueName(issue.id, e.target.value)}
+                value={issueName}
+                onChange={e => setIssueName(e.target.value)}
               />
               <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
                 <FontAwesomeIcon icon={faPen} color="#4F4F4F" />
@@ -75,7 +83,7 @@ const Issue = ({ issue, onChangeIssueName }) => {
           </div>
           <button
             className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md"
-            onClick={null}
+            onClick={() => updateIssue(issue.id)}
           >
             Save
           </button>
@@ -83,7 +91,7 @@ const Issue = ({ issue, onChangeIssueName }) => {
         </div>
       )}
 
-      {issue.status === 'closed' && isCollapsed && (
+      {issueStatus === 'closed' && isCollapsed && (
         <div className="w-[460px] mx-auto mb-3">
           <button
             className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md"

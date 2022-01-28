@@ -1,15 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
+import useProject from './useProjectHook';
+
 import IssueForm from './project/IssueForm';
 import Issues from './project/Issues';
 
 
 const Project = ({ id, onGoBack }) => {
+  const { project } = useProject(id);
+  
   return (
     <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen overflow-x-auto">
       <p className="text-[50px] font-medium mb-10">
-        Project Name {id}
+        {project.name}
       </p>
 
       <div>
@@ -27,7 +31,9 @@ const Project = ({ id, onGoBack }) => {
             <span className="font-medium text-[25px]">Issues</span>
           </div>
 
-          <Issues />
+          <Issues
+            projectId={project.id}
+          />
           
         </div>
       </div>
