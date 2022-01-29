@@ -6,6 +6,7 @@ const useIssue = issue => {
   const [issueName, setIssueName] = useState('');
   const [assigneeId, setAssigneeId] = useState(0);
   const [issueStatus, setIssueStatus] = useState(statuses[1]);
+  const [newIssueStatus, setNewIssueStatus] = useState('');
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   
@@ -42,7 +43,9 @@ const useIssue = issue => {
     setIsCollapsed,
     isSaved,
     setIsSaved,
-    updateIssue
+    updateIssue,
+    newIssueStatus,
+    setNewIssueStatus
   };
 }
 

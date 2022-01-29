@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+
+import AssigneeDropdown from './AssigneeDropdown';
+import StatusDropdown from './StatusDropdown';
 
 
-const OpenIssue = ({ data, onIssueNameChange, onSave, isSaved }) => {
+const OpenIssue = ({ data, statuses, onIssueNameChange, onIssueStatusChange, onSave, isSaved }) => {
   const { issueName, assigneeId, issueStatus } = data;
 
   return (
@@ -22,34 +25,12 @@ const OpenIssue = ({ data, onIssueNameChange, onSave, isSaved }) => {
         </div>
       </div>
       <div className="w-full h-[40px] mb-3 flex justify-between">
-        <div className="w-1/2 bg-light-gray flex rounded-md">
-          <div className="w-full flex items-center px-4">
-            <input
-              className="w-full bg-light-gray outline-none custom-placeholder"
-              type="text"
-              name="assignee"
-              id="assignee"
-              placeholder="Assignee"
-            />
-            <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
-              <FontAwesomeIcon icon={faAngleDown} color="#4F4F4F" />
-            </div>
-          </div>
-        </div>
-        <div className="w-1/2 bg-light-gray flex rounded-md ml-3">
-          <div className="w-full flex items-center px-4">
-            <input
-              className="w-full bg-light-gray outline-none custom-placeholder"
-              type="text"
-              name="status"
-              id="status"
-              placeholder="Status"
-            />
-            <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
-              <FontAwesomeIcon icon={faAngleDown} color="#4F4F4F" />
-            </div>
-          </div>
-        </div>
+        <AssigneeDropdown />
+        <StatusDropdown
+          currentStatus={issueStatus}
+          statuses={statuses}
+          onStatusChange={newStatus => onIssueStatusChange(newStatus)}
+        />
       </div>
       <button
         className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md"

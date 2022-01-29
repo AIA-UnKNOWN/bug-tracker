@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faExclamationCircle, faEllipsisH, faPen, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faExclamationCircle, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import useIssue from './useIssueHook';
 import OpenIssue from './issue/OpenIssue';
@@ -13,7 +13,7 @@ const Issue = ({ issue }) => {
   const { issueStatus, setIssueStatus } = useIssue(issue);
   const { isCollapsed, setIsCollapsed } = useIssue(issue);
   const { isSaved, setIsSaved } = useIssue(issue);
-  const { updateIssue } = useIssue(issue);
+  const { updateIssue, setNewIssueStatus, newIssueStatus } = useIssue(issue);
 
   return (
     <div
@@ -46,12 +46,18 @@ const Issue = ({ issue }) => {
 
           <OpenIssue
             data={{ issueName, assigneeId, issueStatus }}
+            statuses={statuses}
             onIssueNameChange={e => {
               setIssueName(e.target.value);
               setIsSaved(false);
             }}
+            onIssueStatusChange={newStatus => {
+              setNewIssueStatus(newStatus);
+              setIsSaved(false);
+            }}
             onSave={() => {
-              updateIssue({ id: issue.id, issueName, assigneeId, issueStatus });
+              updateIssue({ id: issue.id, issueName, assigneeId, issueStatus: newIssueStatus });
+              setIssueStatus(newIssueStatus);
               setIsSaved(true);
             }}
             isSaved={isSaved}
