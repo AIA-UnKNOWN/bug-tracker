@@ -7,6 +7,7 @@ const useIssue = issue => {
   const [assigneeId, setAssigneeId] = useState(0);
   const [issueStatus, setIssueStatus] = useState(statuses[1]);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   
   useEffect(() => {
     setIssueName(issue.name);
@@ -14,20 +15,8 @@ const useIssue = issue => {
     setIssueStatus(issue.status);
   }, []);
 
-  const getIssue = async (issueId) => {
-    const response = await fetch(`/api/issue/${issueId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      }
-    });
-    const issue = await response.json();
-    console.log(issue)
-  }
-
-  const updateIssue = async (issueId) => {
-    const response = await fetch(`/api/issue/${issueId}/update`, {
+  const updateIssue = async ({ id, issueName, assigneeId, issueStatus }) => {
+    const response = await fetch(`/api/issue/${id}/update`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -38,7 +27,7 @@ const useIssue = issue => {
       body: JSON.stringify({ issueName, assigneeId, issueStatus })
     });
     const data = await response.json();
-    console.log(data.message);
+    return;
   }
 
   return {
@@ -50,7 +39,8 @@ const useIssue = issue => {
     setIssueStatus,
     isCollapsed,
     setIsCollapsed,
-    getIssue,
+    isSaved,
+    setIsSaved,
     updateIssue
   };
 }

@@ -5,20 +5,23 @@ import useIssue from './useIssueHook';
 
 
 const Issue = ({ issue }) => {
-  const {
-    issueName,
-    setIssueName,
-    assigneeId,
-    setAssigneeId,
-    issueStatus,
-    setIssueStatus,
-    isCollapsed,
-    setIsCollapsed,
-    updateIssue
-  } = useIssue(issue);
+  const { issueName, setIssueName } = useIssue(issue);
+  const { assigneeId, setAssigneeId } = useIssue(issue);
+  const { issueStatus, setIssueStatus } = useIssue(issue);
+  const { isCollapsed, setIsCollapsed } = useIssue(issue);
+  const { isSaved, setIsSaved } = useIssue(issue);
+  const { updateIssue } = useIssue(issue);
 
   return (
-    <div className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4">
+    <div
+      className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4"
+      onKeyPress={e => {
+        if (e.key === 'Enter') {
+          updateIssue({ id: issue.id, issueName, assigneeId, issueStatus });
+          setIsSaved(true);
+        } 
+      }}
+    >
       <div className="w-full min-h-[110px] flex justify-between items-center py-4 px-8">
         <div>
           <p className="text-[17px] font-medium pr-8">{issueName}</p>
@@ -44,7 +47,10 @@ const Issue = ({ issue }) => {
                 className="flex flex-1 bg-light-gray outline-none custom-placeholder"
                 type="text"
                 value={issueName}
-                onChange={e => setIssueName(e.target.value)}
+                onChange={e => {
+                  setIssueName(e.target.value);
+                  setIsSaved(false);
+                }}
               />
               <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
                 <FontAwesomeIcon icon={faPen} color="#4F4F4F" />
@@ -83,9 +89,12 @@ const Issue = ({ issue }) => {
           </div>
           <button
             className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md"
-            onClick={() => updateIssue(issue.id)}
+            onClick={() => {
+              updateIssue({ id: issue.id, issueName, assigneeId, issueStatus });
+              setIsSaved(true);
+            }}
           >
-            Save
+            {isSaved ? 'Saved!' : 'Save'}
           </button>
 
         </div>
