@@ -7,6 +7,7 @@ import ClosedIssue from './issue/ClosedIssue';
 
 
 const Issue = ({ issue }) => {
+  const { statuses } = useIssue(issue);
   const { issueName, setIssueName } = useIssue(issue);
   const { assigneeId, setAssigneeId } = useIssue(issue);
   const { issueStatus, setIssueStatus } = useIssue(issue);
@@ -42,6 +43,7 @@ const Issue = ({ issue }) => {
 
       {isCollapsed && (
         issueStatus === 'open' ? (
+
           <OpenIssue
             data={{ issueName, assigneeId, issueStatus }}
             onIssueNameChange={e => {
@@ -54,10 +56,16 @@ const Issue = ({ issue }) => {
             }}
             isSaved={isSaved}
           />
+
         ) : (
+
           <ClosedIssue
-            onReOpenIssue={null}
+            onReOpenIssue={() => {
+              updateIssue({ id: issue.id, issueName, assigneeId, issueStatus: statuses[1] });
+              setIssueStatus(statuses[1]);
+            }}
           />
+
         )
       )}
 

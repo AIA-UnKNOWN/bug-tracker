@@ -31,6 +31,7 @@ const useIssue = issue => {
   }
 
   return {
+    statuses,
     issueName,
     setIssueName,
     assigneeId,
