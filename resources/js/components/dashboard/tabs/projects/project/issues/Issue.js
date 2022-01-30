@@ -24,6 +24,7 @@ const Issue = ({ issue }) => {
         if (e.key === 'Enter') {
           updateIssue({ id: issue.id, issueName, assigneeId, issueStatus });
           setIsSaved(true);
+          setIsCollapsed(false);
         }
       }}
     >
