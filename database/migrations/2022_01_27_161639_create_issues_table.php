@@ -16,7 +16,7 @@ class CreateIssuesTable extends Migration
         Schema::create('issues', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('assignee_id');
+            $table->unsignedBigInteger('assignee_id')->nullable();
             $table->enum('status', ['open', 'closed']);
             $table->unsignedBigInteger('project_id');
             $table->foreign('assignee_id')->references('id')->on('users');

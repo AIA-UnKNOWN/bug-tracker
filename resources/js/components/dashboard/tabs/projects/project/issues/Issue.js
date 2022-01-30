@@ -16,7 +16,7 @@ const Issue = ({ issue }) => {
     isSaved,       setIsSaved,
     updateIssue,   setNewIssueStatus,   newIssueStatus
   } = useIssue(issue);
-
+  
   return (
     <div
       className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4"
@@ -48,7 +48,7 @@ const Issue = ({ issue }) => {
         issueStatus === 'open' ? (
 
           <OpenIssue
-            data={{ issueName, assigneeId, issueStatus }}
+            data={{ issueId: issue.id, issueName, issueStatus }}
             statuses={statuses}
             onIssueNameChange={e => {
               setIssueName(e.target.value);

@@ -14,6 +14,7 @@ const useIssue = issue => {
     setIssueName(issue.name);
     setAssigneeId(issue.assignee_id);
     setIssueStatus(issue.status);
+    setNewIssueStatus(issue.status);
   }, []);
 
   const updateIssue = async ({ id, issueName, assigneeId, issueStatus }) => {

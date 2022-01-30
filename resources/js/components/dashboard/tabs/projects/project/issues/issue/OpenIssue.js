@@ -6,7 +6,7 @@ import StatusDropdown from './StatusDropdown';
 
 
 const OpenIssue = ({ data, statuses, onIssueNameChange, onIssueStatusChange, onSave, isSaved }) => {
-  const { issueName, assigneeId, issueStatus } = data;
+  const { issueId, issueName, issueStatus } = data;
 
   return (
     <div className="w-[460px] mx-auto mb-3">
@@ -25,7 +25,10 @@ const OpenIssue = ({ data, statuses, onIssueNameChange, onIssueStatusChange, onS
         </div>
       </div>
       <div className="w-full h-[40px] mb-3 flex justify-between">
-        <AssigneeDropdown />
+        <AssigneeDropdown
+          issueId={issueId}
+          onAssigneeIdChange={newAssigneeId => console.log(newAssigneeId)}
+        />
         <StatusDropdown
           currentStatus={issueStatus}
           statuses={statuses}

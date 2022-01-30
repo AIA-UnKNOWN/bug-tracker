@@ -65,4 +65,7 @@ Route::prefix('/issue')->group(function () {
     Route::put('/{id}/update', Issue\UpdateController::class)
         ->middleware('auth:sanctum')
         ->name('update-issue');
+    Route::get('/{id}/assignees', Issue\AssigneesController::class)
+        ->middleware('auth:sanctum')
+        ->name('issue-assignees');
 });
