@@ -7,13 +7,15 @@ import ClosedIssue from './issue/ClosedIssue';
 
 
 const Issue = ({ issue }) => {
-  const { statuses } = useIssue(issue);
-  const { issueName, setIssueName } = useIssue(issue);
-  const { assigneeId, setAssigneeId } = useIssue(issue);
-  const { issueStatus, setIssueStatus } = useIssue(issue);
-  const { isCollapsed, setIsCollapsed } = useIssue(issue);
-  const { isSaved, setIsSaved } = useIssue(issue);
-  const { updateIssue, setNewIssueStatus, newIssueStatus } = useIssue(issue);
+  const {
+    statuses,
+    issueName,     setIssueName,
+    assigneeId,    setAssigneeId,
+    issueStatus,   setIssueStatus,
+    isCollapsed,   setIsCollapsed,
+    isSaved,       setIsSaved,
+    updateIssue,   setNewIssueStatus,   newIssueStatus
+  } = useIssue(issue);
 
   return (
     <div
