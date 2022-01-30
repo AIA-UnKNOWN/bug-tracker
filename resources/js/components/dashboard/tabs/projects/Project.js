@@ -16,8 +16,8 @@ const Project = ({ id, onGoBack }) => {
         {project.name}
       </p>
 
-      <div>
-        <div>
+      <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col">
           <div
             className="w-[50px] h-[50px] bg-light-gray flex justify-center items-center text-[25px] rounded-[50%] cursor-pointer"
             onClick={() => onGoBack()}
