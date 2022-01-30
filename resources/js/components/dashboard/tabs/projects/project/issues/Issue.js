@@ -59,6 +59,7 @@ const Issue = ({ issue }) => {
               updateIssue({ id: issue.id, issueName, assigneeId, issueStatus: newIssueStatus });
               setIssueStatus(newIssueStatus);
               setIsSaved(true);
+              setIsCollapsed(false);
             }}
             isSaved={isSaved}
           />
@@ -69,6 +70,7 @@ const Issue = ({ issue }) => {
             onReOpenIssue={() => {
               updateIssue({ id: issue.id, issueName, assigneeId, issueStatus: statuses[1] });
               setIssueStatus(statuses[1]);
+              setIsCollapsed(false);
             }}
           />
 
