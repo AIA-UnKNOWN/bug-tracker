@@ -15,4 +15,8 @@
         color: #4F4F4F;
         font-weight: 500;
     }
+    .custom-date::-webkit-calendar-picker-indicator {
+        font-size: 17px;
+        margin-right: 2px;
+    }
 }

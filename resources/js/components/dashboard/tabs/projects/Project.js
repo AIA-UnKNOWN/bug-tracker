@@ -3,7 +3,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import useProject from './useProjectHook';
 
-import IssueForm from './project/IssueForm';
+import SearchIssue from './project/SearchIssue';
 import Issues from './project/Issues';
 
 
@@ -25,7 +25,7 @@ const Project = ({ id, onGoBack }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
 
-          <IssueForm />
+          <SearchIssue />
 
           <div className="border border-y-gray border-x-white my-[40px] py-2">
             <span className="font-medium text-[25px]">Issues</span>
