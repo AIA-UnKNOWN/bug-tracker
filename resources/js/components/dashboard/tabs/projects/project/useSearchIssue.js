@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { setIssues } from '../../../../../reducers/issuesSlice';
 
 
-const useSearchIssue = (projectId, onResultsFound) => {
+const useSearchIssue = projectId => {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     issue: '',
     developer: '',
@@ -28,7 +32,7 @@ const useSearchIssue = (projectId, onResultsFound) => {
       }
     });
     const results = await response.json();
-    onResultsFound(results);
+    dispatch(setIssues({ issues: results }));
   }
 
   const validate = callback => {

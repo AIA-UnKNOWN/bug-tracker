@@ -8,8 +8,8 @@ import MinMaxDateInput from './form-inputs/MinMaxDateInput';
 import StatusInput from './form-inputs/StatusInput';
 
 
-const SearchIssue = ({ projectId, onResultsFound }) => {
-  const { form, setForm, formErrors, runSearch } = useSearchIssue(projectId, onResultsFound);
+const SearchIssue = ({ projectId }) => {
+  const { form, setForm, formErrors, runSearch } = useSearchIssue(projectId);
 
   return (
     <div className="w-[500px] mt-[40px]">

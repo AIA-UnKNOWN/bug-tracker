@@ -27,7 +27,6 @@ const Project = ({ id, onGoBack }) => {
 
           <SearchIssue
             projectId={id}
-            onResultsFound={results => console.log(results)}
           />
 
           <div className="border border-y-gray border-x-white my-[40px] py-2">
