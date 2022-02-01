@@ -1,6 +1,7 @@
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBug, faUser, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
+import useSearchIssue from './useSearchIssue';
 
 import Input from './form-inputs/Input';
 import MinMaxDateInput from './form-inputs/MinMaxDateInput';
@@ -8,45 +9,7 @@ import StatusInput from './form-inputs/StatusInput';
 
 
 const SearchIssue = ({ projectId, onResultsFound }) => {
-  const [form, setForm] = useState({
-    issue: '',
-    developer: '',
-    min: null, max: null,
-    status: 'open'
-  });
-  const [formErrors, setFormErrors] = useState({});
-
-  const runSearch = projectId => {
-    validate(errors => {
-      if (errors) return;
-
-      searchIssue(projectId);
-    });
-  }
-
-  const searchIssue = async (projectId) => {
-    const { issue, developer, status } = form;
-    const response = await fetch(`/api/issues/${projectId}/search?issueName=${issue}&issueStatus=${status}&developer=${developer}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
-      }
-    });
-    const results = await response.json();
-    onResultsFound(results);
-  }
-
-  const validate = callback => {
-    const errors = {};
-    const SUFFIX_MESSAGE = 'field is required';
-
-    if (form.issue.length === 0) errors.issue = `Issue ${SUFFIX_MESSAGE}`;
-    if (form.developer.length === 0) errors.developer = `Developer ${SUFFIX_MESSAGE}`;
-
-    setFormErrors(errors);
-    callback(Object.keys(errors).length > 0);
-  }
+  const { form, setForm, formErrors, runSearch } = useSearchIssue(projectId, onResultsFound);
 
   return (
     <div className="w-[500px] mt-[40px]">
