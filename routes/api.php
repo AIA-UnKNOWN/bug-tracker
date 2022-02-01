@@ -56,6 +56,9 @@ Route::prefix('/issues')->group(function () {
     Route::get('/{projectId}', Issues\IndexController::class)
         ->middleware('auth:sanctum')
         ->name('issues');
+    Route::get('/{projectId}/search', Issues\SearchController::class)
+        ->middleware('auth:sanctum')
+        ->name('search-issues');
 });
 
 Route::prefix('/issue')->group(function () {

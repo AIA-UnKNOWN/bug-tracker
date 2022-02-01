@@ -8,7 +8,7 @@ import Issues from './project/Issues';
 
 
 const Project = ({ id, onGoBack }) => {
-  const { project } = useProject(id);
+  const { project, searchResults, setSearchResults } = useProject(id);
   
   return (
     <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen overflow-x-auto">
@@ -25,7 +25,10 @@ const Project = ({ id, onGoBack }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
 
-          <SearchIssue />
+          <SearchIssue
+            projectId={id}
+            onResultsFound={results => console.log(results)}
+          />
 
           <div className="border border-y-gray border-x-white my-[40px] py-2">
             <span className="font-medium text-[25px]">Issues</span>
@@ -34,7 +37,7 @@ const Project = ({ id, onGoBack }) => {
           <Issues
             projectId={project.id}
           />
-          
+
         </div>
       </div>
     </div>
