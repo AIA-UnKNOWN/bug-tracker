@@ -8,6 +8,7 @@ use App\Http\Controllers\Projects;
 use App\Http\Controllers\Project;
 use App\Http\Controllers\Issues;
 use App\Http\Controllers\Issue;
+use App\Http\Controllers\Friends;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +72,16 @@ Route::prefix('/issue')->group(function () {
     Route::get('/{id}/assignees', Issue\AssigneesController::class)
         ->middleware('auth:sanctum')
         ->name('issue-assignees');
+});
+
+Route::prefix('/friends')->group(function () {
+    Route::get('/', Friends\IndexController::class)
+        ->middleware('auth:sanctum')
+        ->name('friends');
+    Route::get('/requesting', Friends\FriendRequestsController::class)
+        ->middleware('auth:sanctum')
+        ->name('friend-requests');
+    Route::put('/{friendId}/accept', Friends\AcceptController::class)
+        ->middleware('auth:sanctum')
+        ->name('accept-friend-request');
 });
