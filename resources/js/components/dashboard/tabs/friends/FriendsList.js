@@ -1,4 +1,8 @@
+import useFriendsList from './useFriendsList';
+
+
 const FriendsList = ({ data }) => {
+  useFriendsList();
 
   if (data.length === 0) return (
     <div className="flex flex-col flex-1 justify-center items-center bg-light-gray">
@@ -20,13 +24,13 @@ const FriendsList = ({ data }) => {
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">
               <img
                 className="w-full h-full object-cover"
-                src={friend.profilePicture}
+                src={friend.profile_picture ?? ''}
                 alt={`${friend.name}'s profile picture`}
               />
             </div>
             <div className="ml-8">
               <p className="font-semibold text-[25px]">{friend.name}</p>
-              <p className="font-medium text-[15px]">{friend.type}</p>
+              <p className="font-medium text-[15px]">Software Developer</p>
             </div>
           </div>
         </div>

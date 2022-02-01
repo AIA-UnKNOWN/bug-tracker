@@ -5,26 +5,7 @@ const samplePic = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?
 const friendsSlice = createSlice({
   name: 'friends',
   initialState: {
-    friends: [
-      {
-        id: 1,
-        name: 'John Doe',
-        type: 'Software Developer',
-        profilePicture: samplePic
-      },
-      {
-        id: 2,
-        name: 'Mark Houston',
-        type: 'Frontend Developer',
-        profilePicture: samplePic
-      },
-      {
-        id: 3,
-        name: 'Xavier San Lorenzo',
-        type: 'Full Stack Developer',
-        profilePicture: samplePic
-      }
-    ],
+    friends: [],
     friendRequests: [
       {
         id: 4,
@@ -36,10 +17,10 @@ const friendsSlice = createSlice({
   },
   reducers: {
     setFriends: (state, action) => {
-      state.friends = action.payload.newFriends;
+      state.friends = action.payload.friends;
     },
     setFriendRequests: (state, action) => {
-      state.friendRequests = action.payload.newFriendRequests;
+      state.friendRequests = action.payload.friendRequests;
     }
   }
 });
