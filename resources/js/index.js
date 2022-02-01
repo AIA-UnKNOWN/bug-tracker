@@ -7,6 +7,7 @@ import tabSlice from './reducers/tabSlice';
 import userSlice from './reducers/userSlice';
 import friendsSlice from './reducers/friendsSlice';
 import projectsSlice from './reducers/projectsSlice';
+import issuesSlice from './reducers/issuesSlice';
 
 import App from './App';
 
@@ -16,6 +17,7 @@ const store = configureStore({
     user: userSlice,
     tab: tabSlice,
     projects: projectsSlice,
+    issues: issuesSlice,
     friends: friendsSlice
   }
 });
