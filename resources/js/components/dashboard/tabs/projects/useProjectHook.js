@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 
 const useProject = id => {
   const [project, setProject] = useState({});
-  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     getProject(id);
@@ -26,7 +25,7 @@ const useProject = id => {
     });
   }
 
-  return { project, setProject, getProject, searchResults, setSearchResults };
+  return { project, setProject, getProject };
 }
 
 export default useProject;

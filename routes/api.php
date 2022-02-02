@@ -51,6 +51,9 @@ Route::prefix('/project')->group(function () {
     Route::get('/{id}', Project\IndexController::class)
         ->middleware('auth:sanctum')
         ->name('project');
+    Route::post('/{projectId}/add', Issue\AddController::class)
+        ->middleware('auth:sanctum')
+        ->name('add-issue');
 });
 
 Route::prefix('/issues')->group(function () {

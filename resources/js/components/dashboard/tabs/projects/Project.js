@@ -4,11 +4,12 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import useProject from './useProjectHook';
 
 import SearchIssue from './project/SearchIssue';
+import AddIssue from './project/AddIssue';
 import Issues from './project/Issues';
 
 
 const Project = ({ id, onGoBack }) => {
-  const { project, searchResults, setSearchResults } = useProject(id);
+  const { project } = useProject(id);
   
   return (
     <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen overflow-x-auto">
@@ -25,17 +26,16 @@ const Project = ({ id, onGoBack }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
 
-          <SearchIssue
-            projectId={id}
-          />
+          <div className="flex justify-evenly flex-wrap">
+            <SearchIssue projectId={id} />
+            <AddIssue projectId={id} />
+          </div>
 
           <div className="border border-y-gray border-x-white my-[40px] py-2">
             <span className="font-medium text-[25px]">Issues</span>
           </div>
 
-          <Issues
-            projectId={project.id}
-          />
+          <Issues projectId={project.id} />
 
         </div>
       </div>
