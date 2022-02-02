@@ -1,4 +1,8 @@
+import useFriendRequests from './useFriendRequests';
+
+
 const FriendRequests = ({ data }) => {
+  const { acceptFriendRequest } = useFriendRequests();
 
   if (data.length === 0) return (
     <div className="flex flex-col flex-1 justify-center items-center bg-light-gray">
@@ -20,18 +24,19 @@ const FriendRequests = ({ data }) => {
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">
               <img
                 className="w-full h-full object-cover"
-                src={friendRequest.profilePicture}
+                src={friendRequest.profile_picture ?? ''}
                 alt={`${friendRequest.name}'s profile picture`}
               />
             </div>
             <div className="ml-8 grow">
               <div>
                 <p className="font-semibold text-[25px]">{friendRequest.name}</p>
-                <p className="font-medium text-[15px] -mt-1">{friendRequest.type}</p>
+                <p className="font-medium text-[15px] -mt-1">Software Developer</p>
               </div>
               <div className="flex justify-end w-full mt-3">
                 <button
                   className="flex justify-center items-center w-[100px] h-[30px] rounded-md bg-purple text-white font-medium"
+                  onClick={() => acceptFriendRequest(friendRequest.id)}
                 >Accept</button>
                 <button
                   className="flex justify-center items-center w-[100px] h-[30px] rounded-md bg-white border border-purple text-purple font-medium ml-4"

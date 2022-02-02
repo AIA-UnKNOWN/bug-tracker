@@ -6,14 +6,7 @@ const friendsSlice = createSlice({
   name: 'friends',
   initialState: {
     friends: [],
-    friendRequests: [
-      {
-        id: 4,
-        name: 'Harry Potter',
-        type: 'Backend Developer',
-        profilePicture: samplePic
-      }
-    ]
+    friendRequests: []
   },
   reducers: {
     setFriends: (state, action) => {
