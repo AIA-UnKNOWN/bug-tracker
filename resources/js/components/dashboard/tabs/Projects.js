@@ -1,4 +1,5 @@
 import useProjects from './useProjectsHook';
+import AddProject from './projects/AddProject';
 import Project from './projects/Project';
 import ProjectItem from './projects/ProjectItem';
 
@@ -24,7 +25,9 @@ const Projects = () =>  {
         Projects
       </p>
 
-      <div className="flex flex-col flex-1">
+      <AddProject />
+
+      <div className="flex flex-col flex-1 mt-[40px]">
 
         {projects.length !== 0 ? (
 
