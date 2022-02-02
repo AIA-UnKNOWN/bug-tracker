@@ -36,7 +36,19 @@ const useFriendRequests = () => {
     if (data.message === 'accepted') getFriendRequests();
   }
 
-  return { getFriendRequests, acceptFriendRequest };
+  const rejectFriendRequest = async (friendId) => {
+    const response = await fetch(`/api/friends/${friendId}/reject`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
+      }
+    });
+    const data = await response.json();
+    if (data.message === 'rejected') getFriendRequests();
+  }
+
+  return { getFriendRequests, acceptFriendRequest, rejectFriendRequest };
 }
 
 export default useFriendRequests;

@@ -84,4 +84,7 @@ Route::prefix('/friends')->group(function () {
     Route::put('/{friendId}/accept', Friends\AcceptController::class)
         ->middleware('auth:sanctum')
         ->name('accept-friend-request');
+    Route::delete('/{friendId}/reject', Friends\RejectController::class)
+        ->middleware('auth:sanctum')
+        ->name('reject-friend-request');
 });

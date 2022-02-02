@@ -2,7 +2,7 @@ import useFriendRequests from './useFriendRequests';
 
 
 const FriendRequests = ({ data }) => {
-  const { acceptFriendRequest } = useFriendRequests();
+  const { acceptFriendRequest, rejectFriendRequest } = useFriendRequests();
 
   if (data.length === 0) return (
     <div className="flex flex-col flex-1 justify-center items-center bg-light-gray">
@@ -40,6 +40,7 @@ const FriendRequests = ({ data }) => {
                 >Accept</button>
                 <button
                   className="flex justify-center items-center w-[100px] h-[30px] rounded-md bg-white border border-purple text-purple font-medium ml-4"
+                  onClick={() => rejectFriendRequest(friendRequest.id)}
                 >Reject</button>
               </div>
             </div>
