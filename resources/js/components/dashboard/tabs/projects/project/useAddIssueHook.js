@@ -19,7 +19,10 @@ const useAddIssue = projectId => {
       body: JSON.stringify({ issueName: name })
     });
     const data = await response.json();
-    if (data.message === 'added') getIssues(projectId);
+    if (data.message === 'added') {
+      getIssues(projectId);
+      setName('');
+    }
   }
 
   return { name, setName, addIssue };
