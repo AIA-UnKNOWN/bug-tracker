@@ -9,6 +9,7 @@ import ClosedIssue from './issue/ClosedIssue';
 const Issue = ({ issue }) => {
   const {
     statuses,
+    dateIssued,
     issueName,     setIssueName,
     assigneeId,    setAssigneeId,
     issueStatus,   setIssueStatus,
@@ -16,7 +17,7 @@ const Issue = ({ issue }) => {
     isSaved,       setIsSaved,
     updateIssue,   setNewIssueStatus,   newIssueStatus
   } = useIssue(issue);
-  
+
   return (
     <div
       className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4"
@@ -31,7 +32,7 @@ const Issue = ({ issue }) => {
       <div className="w-full min-h-[110px] flex justify-between items-center py-4 px-8">
         <div>
           <p className="text-[17px] font-medium pr-8">{issueName}</p>
-          <span className="block text-[10px]">Date Issued: {issue.created_at || 'N/A'}</span>
+          <span className="block text-[10px]">Date Issued: {dateIssued || 'N/A'}</span>
         </div>
         <div className={`flex items-center h-[25px] ${issueStatus === 'open' ? 'bg-light-green' : 'bg-light-red'} px-2 rounded-full`}>
           <span className={`capitalize font-medium text-[12px] pr-2 ${issueStatus === 'open' ? 'text-dark-green' : 'text-dark-red'}`}>
