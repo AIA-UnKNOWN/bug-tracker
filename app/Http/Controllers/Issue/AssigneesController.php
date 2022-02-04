@@ -10,16 +10,15 @@ class AssigneesController extends Controller
 {
     function __invoke(Request $request, $issueId)
     {
-        $assigneeIds = DB::select(
+        $assignees = DB::select(
             "SELECT
-                users.id,
-                users.first_name,
-                users.last_name
-            FROM issues
-            JOIN users ON users.id = issues.assignee_id
-            WHERE issues.id = ?",
+                u.id,
+                CONCAT(u.first_name, ' ', u.last_name) AS name
+            FROM issue_assignees ia
+                JOIN users u ON u.id = ia.user_id
+            WHERE ia.issue_id = ?",
             [$issueId]
         );
-        return response()->json($assigneeIds);
+        return response()->json($assignees);
     }
 }

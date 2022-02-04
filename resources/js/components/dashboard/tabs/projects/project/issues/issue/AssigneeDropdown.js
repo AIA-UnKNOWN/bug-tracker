@@ -4,15 +4,13 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import useAssignee from './useAssigneeHook';
 
 
-const AssigneeDropdown = ({ issueId, currentAssigneeId, onAssigneeIdChange }) => {
+const AssigneeDropdown = ({ issueId }) => {
   const {
-    isCollapsed,     setIsCollapsed,
-    setAssigneeId,
-    assignees,
-    assignee,        setAssignee,
-    getAssignees
-  } = useAssignee(issueId, currentAssigneeId);
-
+    isCollapsed, setIsCollapsed,
+    assignees, nonAssignees,
+    assign, unAssign
+  } = useAssignee(issueId);
+  
   return (
     <div
       className="relative w-1/2 bg-light-gray flex rounded-md cursor-pointer"
@@ -21,9 +19,7 @@ const AssigneeDropdown = ({ issueId, currentAssigneeId, onAssigneeIdChange }) =>
       <div className="w-full flex items-center px-4">
         <span
           className="w-full bg-light-gray text-[13px] capitalize"
-        >
-          {Object.keys(assignee).length > 0 ? `${assignee.first_name} ${assignee.last_name}` : 'N/A'}
-        </span>
+        >Assignees</span>
         <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
           <FontAwesomeIcon icon={faAngleDown} color="#4F4F4F" />
         </div>
@@ -31,16 +27,41 @@ const AssigneeDropdown = ({ issueId, currentAssigneeId, onAssigneeIdChange }) =>
 
       {isCollapsed && (
         <div className="absolute top-[110%] w-full bg-light-gray rounded-md overflow-hidden ">
-          {assignees.map((assignee, index) => (
-            <p
+          {assignees.map(assignee => (
+            <label
               key={assignee.id}
-              className="flex items-center text-[13px] h-[40px] px-4 capitalize hover:bg-gray"
-              onClick={() => {
-                onAssigneeIdChange(assignee.id);
-                setAssigneeId(assignee.id);
-                setAssignee(assignee);
-              }}
-            >{`${assignee.first_name} ${assignee.last_name}`}</p>
+              htmlFor={`assignee-${assignee.id}`}
+              className="flex items-center text-[13px] h-[40px] px-4 capitalize cursor-pointer hover:bg-gray"
+              onClick={e => e.stopPropagation()}
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+                name={`assignee-${assignee.id}`}
+                id={`assignee-${assignee.id}`}
+                checked={assignee.isAssigned}
+                onChange={() => unAssign(assignee.id)}
+              />
+              <span>{assignee.name}</span>
+            </label>
+          ))}
+          {nonAssignees.map(nonAssignee => (
+            <label
+              key={nonAssignee.id}
+              htmlFor={`non-assignee-${nonAssignee.id}`}
+              className="flex items-center text-[13px] h-[40px] px-4 capitalize cursor-pointer hover:bg-gray"
+              onClick={e => e.stopPropagation()}
+            >
+              <input
+                className="mr-2"
+                type="checkbox"
+                name={`non-assignee-${nonAssignee.id}`}
+                id={`non-assignee-${nonAssignee.id}`}
+                checked={nonAssignee.isAssigned}
+                onChange={() => assign(nonAssignee.id)}
+              />
+              <span>{nonAssignee.name}</span>
+            </label>
           ))}
         </div>
       )}

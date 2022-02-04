@@ -75,6 +75,15 @@ Route::prefix('/issue')->group(function () {
     Route::get('/{id}/assignees', Issue\AssigneesController::class)
         ->middleware('auth:sanctum')
         ->name('issue-assignees');
+    Route::get('/{id}/non-assignees', Issue\NonAssigneesController::class)
+        ->middleware('auth:sanctum')
+        ->name('non-issue-assignees');
+    Route::post('/{id}/assign', Issue\AssignController::class)
+        ->middleware('auth:sanctum')
+        ->name('assign');
+    Route::delete('/{id}/assignee/{userId}/unassign', Issue\UnassignController::class)
+        ->middleware('auth:sanctum')
+        ->name('unassign');
 });
 
 Route::prefix('/friends')->group(function () {

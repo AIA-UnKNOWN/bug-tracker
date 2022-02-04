@@ -27,7 +27,6 @@ const OpenIssue = ({ data, statuses, onIssueNameChange, onIssueStatusChange, onS
       <div className="w-full h-[40px] mb-3 flex justify-between">
         <AssigneeDropdown
           issueId={issueId}
-          onAssigneeIdChange={newAssigneeId => console.log(newAssigneeId)}
         />
         <StatusDropdown
           currentStatus={issueStatus}
