@@ -93,6 +93,9 @@ Route::prefix('/friends')->group(function () {
     Route::get('/search', Friends\SearchController::class)
         ->middleware('auth:sanctum')
         ->name('search-friend');
+    Route::post('/add', Friends\AddController::class)
+        ->middleware('auth:sanctum')
+        ->name('add-friend');
     Route::get('/requesting', Friends\FriendRequestsController::class)
         ->middleware('auth:sanctum')
         ->name('friend-requests');

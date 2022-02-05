@@ -2,7 +2,7 @@ import useFriendsList from './useFriendsList';
 
 
 const FriendsList = ({ data }) => {
-  useFriendsList();
+  const { addFriend } = useFriendsList();
 
   if (data.length === 0) return (
     <div className="flex flex-col flex-1 justify-center items-center bg-light-gray">
@@ -37,7 +37,7 @@ const FriendsList = ({ data }) => {
                   <div className="flex justify-end">
                     <button
                       className="w-[100px] h-[30px] bg-purple text-white text-[15px] font-medium rounded-md"
-                      onClick={() => console.log(friend.id)}
+                      onClick={() => addFriend(friend.id)}
                     >Add</button>
                   </div>
                 )}
