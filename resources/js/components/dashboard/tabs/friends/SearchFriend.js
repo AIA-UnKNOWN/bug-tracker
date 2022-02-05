@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
+import useSearchFriend from './useSearchFriend';
+
 
 const SearchFriend = () => {
+  const { searchKey, setSearchKey, search } = useSearchFriend();
+
   return (
     <div className="w-[500px] shadow-md p-[20px]">
 
@@ -14,6 +18,8 @@ const SearchFriend = () => {
             name="developer"
             id="developer"
             placeholder="Search developer"
+            value={searchKey}
+            onChange={e => setSearchKey(e.target.value)}
           />
           <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
             <FontAwesomeIcon icon={faUser} color="#4F4F4F" />
@@ -23,10 +29,8 @@ const SearchFriend = () => {
 
       <button
         className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-3"
-        onClick={null}
-      >
-        Search
-      </button>
+        onClick={() => search()}
+      >Search</button>
     </div>
   );
 }

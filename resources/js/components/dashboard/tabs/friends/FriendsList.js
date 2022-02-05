@@ -20,7 +20,7 @@ const FriendsList = ({ data }) => {
           key={friend.id}
           className="flex items-center w-[500px] h-[150px] border-l-[5px] border-purple shadow-md mb-4 px-8"
         >
-          <div className="flex items-center">
+          <div className="flex items-center w-full">
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">
               <img
                 className="w-full h-full object-cover"
@@ -28,9 +28,20 @@ const FriendsList = ({ data }) => {
                 alt={`${friend.name}'s profile picture`}
               />
             </div>
-            <div className="ml-8">
-              <p className="font-semibold text-[25px]">{friend.name}</p>
-              <p className="font-medium text-[15px]">Software Developer</p>
+            <div className="ml-8 w-full">
+              <div>
+                <p className="font-semibold text-[25px]">{friend.name}</p>
+                <p className="font-medium text-[15px]">Software Developer</p>
+                
+                {friend.is_friend !== undefined && !!friend.is_friend === false && (
+                  <div className="flex justify-end">
+                    <button
+                      className="w-[100px] h-[30px] bg-purple text-white text-[15px] font-medium rounded-md"
+                      onClick={() => console.log(friend.id)}
+                    >Add</button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
