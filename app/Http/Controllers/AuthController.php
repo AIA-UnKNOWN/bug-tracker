@@ -63,19 +63,14 @@ class AuthController extends Controller
 
     function getCurrentUser(Request $request)
     {
-        $id = $request->user()->id;
-        $user = User::find($id)
-                    ->select('users.*', 'profile_pictures.profile_picture')
-                    ->join('profile_pictures', 'profile_pictures.user_id', '=', 'users.id')
-                    ->first();
         return response()->json([
-            'user' => $user
+            'user' => auth()->user()
         ]);
     }
 
     function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        auth()->user()->tokens()->delete();
         return response()->json([
             'message' => 'logged out'
         ]);

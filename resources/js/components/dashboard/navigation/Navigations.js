@@ -44,13 +44,13 @@ const Navigations = () => {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'logged out') {
-          sessionStorage.removeItem('token');
+          sessionStorage.clear();
           dispatch(updateUser({
             user: {
               id: 0,
               name: '',
               email: '',
-              profilePicture: '',
+              profilePicture: null,
               isAuthenticated: false
             }
           }));

@@ -44,7 +44,7 @@ const App = () => {
           }
         }));
       })
-      .catch(error => console.log(error));
+      .catch(error => sessionStorage.clear());
   }
 
   if (!isAuthenticated) return (
