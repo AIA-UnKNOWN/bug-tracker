@@ -20,7 +20,7 @@ class IndexController extends Controller
             JOIN profile_pictures ON profile_pictures.user_id = friends.friend_user_id
             WHERE friends.user_id = ?
             AND friends.status = 'friend'",
-            [$request->user()->id]
+            [auth()->user()->id]
         );
 
         return response()->json($friends);

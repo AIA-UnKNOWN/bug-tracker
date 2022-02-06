@@ -12,7 +12,7 @@ class AddController extends Controller
     {
         $friend = new Friend;
         $friend->user_id = $request->get('userId');
-        $friend->friend_user_id = $request->user()->id;
+        $friend->friend_user_id = auth()->user()->id;
         $friend->status = 'requesting';
         $friend->save();
 
