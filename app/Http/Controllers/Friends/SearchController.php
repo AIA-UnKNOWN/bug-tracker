@@ -20,7 +20,8 @@ class SearchController extends Controller
                         SELECT
                             *
                         FROM friends f
-                        WHERE f.user_id = u.id
+                        WHERE f.user_id = ?
+                        AND f.friend_user_id = u.id
                     ) THEN 1
                     ELSE 0
                 END as is_friend
@@ -28,7 +29,10 @@ class SearchController extends Controller
             JOIN profile_pictures pp ON pp.user_id = u.id
             WHERE CONCAT(u.first_name, ' ', u.last_name) LIKE '%" .$request->get('developer'). "%' " .
             "AND u.id != ?",
-            [$request->user()->id]
+            [
+                auth()->user()->id,
+                auth()->user()->id
+            ]
         );
 
         return response()->json($results);
