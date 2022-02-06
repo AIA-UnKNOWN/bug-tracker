@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setFriends } from '../../../../reducers/friendsSlice';
+import { setFriends } from '@reducers/friendsSlice';
 
 
 const useSearchFriend = () => {

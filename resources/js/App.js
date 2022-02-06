@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateUser, authenticate } from './reducers/userSlice';
+import { updateUser, authenticate } from '@reducers/userSlice';
 
 import AuthPage from './components/auth/AuthPage';
 import Dashboard from './components/Dashboard';

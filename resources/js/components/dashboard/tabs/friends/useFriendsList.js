@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setFriends } from '../../../../reducers/friendsSlice';
+import { setFriends } from '@reducers/friendsSlice';
 
 
 const useFriendsList = () => {

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateProfilePicture } from '../../../reducers/userSlice';
+import { updateProfilePicture } from '@reducers/userSlice';
 
 
 const useUser = () => {

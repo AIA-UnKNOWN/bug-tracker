@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setProjects } from '../../../reducers/projectsSlice';
+import { setProjects } from '@reducers/projectsSlice';
 
 
 const useProjects = () => {

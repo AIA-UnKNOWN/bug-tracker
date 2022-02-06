@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,3 +14,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/index.js', 'public/js').react();
 mix.postCss('resources/css/index.css', 'public/css', [require('tailwindcss')]);
+mix.alias({
+  '@reducers': path.join(__dirname, 'resources/js/reducers'),
+});

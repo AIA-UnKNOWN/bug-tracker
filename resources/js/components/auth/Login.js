@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../reducers/userSlice';
+import { updateUser } from '@reducers/userSlice';
 
 
 const Login = ({ onSwitchRegisterTab }) => {

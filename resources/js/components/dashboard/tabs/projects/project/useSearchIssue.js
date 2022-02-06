@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setIssues } from '../../../../../reducers/issuesSlice';
+import { setIssues } from '@reducers/issuesSlice';
 
 
 const useSearchIssue = projectId => {

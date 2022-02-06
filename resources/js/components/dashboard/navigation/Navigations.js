@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUsers, faProjectDiagram, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../../reducers/userSlice';
-import { switchTab } from '../../../reducers/tabSlice';
+import { updateUser } from '@reducers/userSlice';
+import { switchTab } from '@reducers/tabSlice';
 
 
 const Navigations = () => {
