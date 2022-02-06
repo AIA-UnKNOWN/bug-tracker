@@ -33,6 +33,9 @@ Route::prefix('/user')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])
         ->middleware('auth:sanctum')
         ->name('logout');
+    Route::get('{id}/profile-picture', ProfilePicture\IndexController::class)
+        ->middleware('auth:sanctum')
+        ->name('profile-picture');
     Route::put('/profile-picture/update', ProfilePicture\UpdateController::class)
         ->middleware('auth:sanctum')
         ->name('profile-picture-update');

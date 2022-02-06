@@ -1,9 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
+import useUser from './useUserHook';
 
 
 const User = () => {
-  const user = useSelector(state => state.user.user);
-  const defaultPicture = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png";
+  const { user, defaultPicture } = useUser();
   
   return (
     <div className="flex justify-center items-center w-full h-[300px] border-b border-light-black">

@@ -9,7 +9,7 @@ export const userSlice = createSlice({
       firstname: '',
       lastname: '',
       email: '',
-      profilePicture: '',
+      profilePicture: null,
       isAuthenticated: false
     }
   },
