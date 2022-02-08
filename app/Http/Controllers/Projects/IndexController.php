@@ -14,12 +14,25 @@ class IndexController extends Controller
         $userId = $request->user()->id;
         $projects = DB::select(
             "SELECT
-                projects.id,
-                projects.name,
-                (SELECT count(*) FROM issues
-                WHERE issues.project_id = projects.id) AS issues
-            FROM projects WHERE projects.user_id = ?",
-            [$userId]
+                p.id,
+                p.name,
+                (SELECT count(*) FROM issues i
+                WHERE i.project_id = p.id) AS issues
+            FROM projects p
+            WHERE p.user_id = ?
+            OR EXISTS (
+                SELECT * FROM issues i
+                WHERE i.project_id = p.id
+                AND EXISTS (
+                    SELECT * FROM issue_assignees ia
+                    WHERE ia.issue_id = i.id
+                    AND ia.user_id = ?
+                )
+            )",
+            [
+                $userId,
+                $userId,
+            ]
         );
 
         return response()->json($projects);
