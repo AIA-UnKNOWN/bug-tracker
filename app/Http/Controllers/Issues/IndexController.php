@@ -10,7 +10,9 @@ class IndexController extends Controller
 {
     function __invoke(Request $request, $projectId)
     {
-        $issues = Issue::where('project_id', $projectId)->get();
+        $issues = Issue::where('project_id', $projectId)
+            ->latest()
+            ->get();
 
         return response()->json($issues);
     }
