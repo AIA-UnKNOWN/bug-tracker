@@ -23,8 +23,8 @@ const Friends = () => {
   }
   
   return (
-    <div className="flex flex-col flex-1 h-screen">
-      <p className="text-[50px] font-medium mb-10">
+    <div className="flex flex-col min-h-screen px-2 pb-2">
+      <p className="text-[50px] font-medium my-5 text-center">
         Friends
       </p>
 
@@ -32,9 +32,9 @@ const Friends = () => {
 
         <SearchFriend />
 
-        <div className="flex border border-y-gray border-x-white my-[40px] py-2">
+        <div className="inline-block w-full border border-y-gray border-x-white my-[40px] py-2 overflow-x-auto">
           <div
-            className={`flex justify-center items-center w-fit mr-16 cursor-pointer ${currentTab === tabs[0] ? 'opacity-100' : 'opacity-50'}`}
+            className={`flex justify-center items-center w-full mr-16 cursor-pointer ${currentTab === tabs[0] ? 'opacity-100' : 'opacity-50'}`}
             onClick={() => setCurrentTab(tabs[0])}
           >
             <span className="inline-block font-medium text-[25px]">All friends</span>
@@ -43,7 +43,7 @@ const Friends = () => {
             </div>
           </div>
           <div
-            className={`flex justify-center items-center w-fit cursor-pointer ${currentTab === tabs[1] ? 'opacity-100' : 'opacity-50'}`}
+            className={`flex justify-center items-center w-full cursor-pointer ${currentTab === tabs[1] ? 'opacity-100' : 'opacity-50'}`}
             onClick={() => setCurrentTab(tabs[1])}
           >
             <span className="inline-block font-medium text-[25px]">Friend requests</span>
