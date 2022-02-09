@@ -8,14 +8,14 @@ const Profile = () => {
   const { user, defaultPicture, processImageFile } = useProfile();
   
   return (
-    <div className="px-[50px] py-[30px]">
-      <p className="text-[50px] font-medium mb-10">
+    <div className="px-2 pb-2">
+      <p className="text-[50px] font-medium my-5 text-center">
         Profile
       </p>
       
       <div>
-        <div className="flex items-center h-[335px] max-w-[900px] border-l-[5px] border-l-purple shadow-lg">
-          <div className="relative w-[200px] h-[200px] rounded-[50%] ml-14">
+        <div className="flex flex-col py-10 px-5 justify-center border-l-[5px] border-l-purple shadow-lg">
+          <div className="relative w-[200px] h-[200px] rounded-[50%] ml-14 mb-5">
             <img
               className="w-full h-full object-cover rounded-[50%]"
               src={user.profilePicture ?? defaultPicture}
@@ -38,22 +38,22 @@ const Profile = () => {
               </label>
             </div>
           </div>
-          <div className="h-fit ml-14">
-            <div className="text-[17px] my-2">
-              <label className="inline-block w-[200px] font-medium">Firstname:</label>
-              <span className="inline-block font-bold">{user.firstname}</span>
+          <div className="h-fit text-center">
+            <div className="text-[17px] my-2 flex flex-col">
+              <label className="block w-full font-medium">Firstname:</label>
+              <span className="block font-bold">{user.firstname}</span>
             </div>
-            <div className="text-[17px] my-2">
-              <label className="inline-block w-[200px] font-medium">Lastname:</label>
-              <span className="inline-block font-bold">{user.lastname}</span>
+            <div className="text-[17px] my-2 flex flex-col">
+              <label className="block w-full font-medium">Lastname:</label>
+              <span className="block font-bold">{user.lastname}</span>
             </div>
-            <div className="text-[17px] my-2">
-              <label className="inline-block w-[200px] font-medium">Email:</label>
-              <span className="inline-block font-bold">{user.email}</span>
+            <div className="text-[17px] my-2 flex flex-col">
+              <label className="block w-full font-medium">Email:</label>
+              <span className="block font-bold">{user.email}</span>
             </div>
-            <div className="text-[17px] my-2">
-              <label className="inline-block w-[200px] font-medium">Description:</label>
-              <span className="inline-block font-bold">Software Developer</span>
+            <div className="text-[17px] my-2 flex flex-col">
+              <label className="block w-full font-medium">Description:</label>
+              <span className="block font-bold">Software Developer</span>
             </div>
           </div>
         </div>

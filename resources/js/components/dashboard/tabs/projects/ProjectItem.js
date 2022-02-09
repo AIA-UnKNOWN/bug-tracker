@@ -1,7 +1,7 @@
 const ProjectItem = ({ projectData, onViewProject }) => {
   return (
     <div
-      className="flex justify-between items-center w-[400px] h-[100px] border-l-[5px] border-l-purple px-[25px] shadow-md mb-5 cursor-pointer"
+      className="flex justify-between items-center h-[100px] border-l-[5px] border-l-purple px-[25px] shadow-md mb-5 cursor-pointer"
       onClick={() => onViewProject(projectData.id)}
     >
       <span className="font-medium text-[25px]">{projectData.name}</span>

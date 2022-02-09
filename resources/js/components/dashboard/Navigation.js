@@ -4,7 +4,7 @@ import Navigations from './navigation/Navigations';
 
 const Navigation = () => {
   return (
-    <div className="flex flex-col w-[300px] h-screen shadow-md shadow-light-black">
+    <div className="flex flex-col absolute top-0 left-0 z-10 bg-white w-full h-screen hidden">
       <User />
       <Navigations />
     </div>

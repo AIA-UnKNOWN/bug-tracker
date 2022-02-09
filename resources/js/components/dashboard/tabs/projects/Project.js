@@ -12,7 +12,7 @@ const Project = ({ id, onGoBack }) => {
   const { project } = useProject(id);
   
   return (
-    <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen overflow-x-auto">
+    <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen">
       <p className="text-[50px] font-medium mb-10">
         {project.name}
       </p>

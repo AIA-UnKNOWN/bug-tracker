@@ -4,7 +4,7 @@ import Tabs from './dashboard/Tabs';
 
 const Dashboard = () => {
   return (
-    <div className="flex">
+    <div className="flex relative border border-red">
       <Navigation />
       <Tabs />
     </div>

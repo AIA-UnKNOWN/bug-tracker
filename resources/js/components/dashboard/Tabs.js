@@ -22,7 +22,7 @@ const Tabs = () => {
   }
 
   return (
-    <div className="grow">
+    <div className="absolute top-0 left-0 w-full">
       {renderTab(currentTab)}
     </div>
   );

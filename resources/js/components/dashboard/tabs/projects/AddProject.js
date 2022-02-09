@@ -8,7 +8,7 @@ const AddProject = () => {
   const { name, setName, addProject } = useAddProject();
 
   return (
-    <div className="w-[500px]">
+    <div className="w-full">
 
       <div className="shadow-md p-[20px]">
         <div className="w-full h-[40px] bg-light-gray mx-auto rounded-md mb-3">

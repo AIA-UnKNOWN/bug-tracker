@@ -20,8 +20,8 @@ const Projects = () =>  {
   }
 
   return (
-    <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen overflow-x-auto">
-      <p className="text-[50px] font-medium mb-10">
+    <div className="flex flex-col h-screen px-2">
+      <p className="text-[50px] font-medium mx-auto my-5">
         Projects
       </p>
 
