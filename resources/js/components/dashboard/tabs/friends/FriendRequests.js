@@ -2,7 +2,7 @@ import useFriendRequests from './useFriendRequests';
 
 
 const FriendRequests = ({ data }) => {
-  const { acceptFriendRequest, rejectFriendRequest } = useFriendRequests();
+  const { defaultPicture, acceptFriendRequest, rejectFriendRequest } = useFriendRequests();
 
   if (data.length === 0) return (
     <div className="flex flex-col flex-1 justify-center items-center bg-light-gray">
@@ -24,7 +24,7 @@ const FriendRequests = ({ data }) => {
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">
               <img
                 className="w-full h-full object-cover"
-                src={friendRequest.profile_picture ?? ''}
+                src={friendRequest.profile_picture ?? defaultPicture}
                 alt={`${friendRequest.name}'s profile picture`}
               />
             </div>

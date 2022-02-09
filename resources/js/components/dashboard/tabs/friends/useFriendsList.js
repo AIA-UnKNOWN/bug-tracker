@@ -6,6 +6,7 @@ import { setFriends } from '@reducers/friendsSlice';
 
 const useFriendsList = () => {
   const dispatch = useDispatch();
+  const defaultPicture = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png";
 
   useEffect(() => {
     getFriends();
@@ -37,7 +38,7 @@ const useFriendsList = () => {
     if (data.message === 'added') return;
   }
 
-  return { getFriends, addFriend };
+  return { defaultPicture, getFriends, addFriend };
 }
 
 export default useFriendsList;

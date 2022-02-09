@@ -6,6 +6,7 @@ import { setFriendRequests } from '@reducers/friendsSlice';
 
 const useFriendRequests = () => {
   const dispatch = useDispatch();
+  const defaultPicture = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png";
 
   useEffect(() => {
     getFriendRequests();
@@ -48,7 +49,7 @@ const useFriendRequests = () => {
     if (data.message === 'rejected') getFriendRequests();
   }
 
-  return { getFriendRequests, acceptFriendRequest, rejectFriendRequest };
+  return { defaultPicture, getFriendRequests, acceptFriendRequest, rejectFriendRequest };
 }
 
 export default useFriendRequests;
