@@ -69,23 +69,23 @@ const Login = ({ onSwitchRegisterTab }) => {
   }
 
   return (
-    <div>
+    <div className="mx-2 w-full">
       {loginError.length > 0 && (
         <div className="bg-light-red h-[60px] flex justify-center items-center rounded-sm mb-4">
           <span className="text-dark-red font-medium text-[15px]">{loginError}</span>
         </div>
       )}
 
-      <div className="bg-white w-[400px] shadow-md font-medium">
+      <div className="bg-white w-full shadow-md font-medium">
         <div className="h-[70px] w-full bg-purple flex justify-center items-center">
           <span className="text-[30px] text-white">Login Page</span>
         </div>
 
         <div className="pt-4 pb-6">
-          <div className="w-fit m-auto mb-2">
+          <div className="w-full m-auto mb-2 px-5">
             <label className="text-[12px]" htmlFor="email">Email</label>
             <input
-              className="block bg-light-gray w-[350px] leading-[40px] rounded-md outline-none px-2 text-[15px]"
+              className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
               type="email"
               name="email"
               id="email"
@@ -96,10 +96,10 @@ const Login = ({ onSwitchRegisterTab }) => {
               <span className="text-[12px] text-red">{errors.email}</span>
             )}
           </div>
-          <div className="w-fit m-auto">
+          <div className="w-full m-auto px-5">
             <label className="text-[12px]" htmlFor="password">Password</label>
             <input
-              className="block bg-light-gray w-[350px] leading-[40px] rounded-md outline-none px-2 text-[15px]"
+              className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
               type="password"
               name="password"
               id="password"
@@ -114,12 +114,14 @@ const Login = ({ onSwitchRegisterTab }) => {
             Don't have an account? <button className="text-light-blue" onClick={onSwitchRegisterTab}>Register</button>
           </p>
 
-          <button
-            className="m-auto flex justify-center items-center bg-purple w-[350px] h-[50px] rounded-md"
-            onClick={() => login()}
-          >
-            <span className="text-[18px] text-white">Login</span>
-          </button>
+          <div className="px-5">
+            <button
+              className="m-auto w-full flex justify-center items-center bg-purple h-[50px] rounded-md"
+              onClick={() => login()}
+            >
+              <span className="text-[18px] text-white">Login</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
