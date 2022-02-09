@@ -12,16 +12,26 @@ class SearchController extends Controller
     {
         $results = DB::select(
             "SELECT
-                issues.*
-            FROM issues
-            JOIN users ON users.id = issues.assignee_id
-            WHERE issues.project_id = ?
-                AND issues.name LIKE '%". $request->get('issueName') ."%' ".
-                "AND issues.status = '". $request->get('issueStatus') ."' ".
-                "AND CONCAT(users.first_name, \" \", users.last_name) LIKE '%". $request->get('developer') ."%'",
-            [$projectId]
+                i.*
+            FROM issues i
+            WHERE i.project_id = ?
+            AND i.name LIKE ?
+            AND EXISTS (
+                SELECT * FROM issue_assignees ia
+                JOIN users u ON u.id = ia.user_id
+                WHERE ia.issue_id = i.id
+                AND CONCAT(u.first_name, ' ', u.last_name) LIKE ?
+            )
+            AND i.status = ?",
+            [
+                $projectId,
+                "%{$request->get('issueName')}%",
+                "%{$request->get('developer')}%",
+                $request->get('issueStatus')
+            ]
         );
 
         return response()->json($results);
     }
 }
+ 
