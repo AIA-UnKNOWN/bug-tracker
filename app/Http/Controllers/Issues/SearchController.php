@@ -22,11 +22,14 @@ class SearchController extends Controller
                 WHERE ia.issue_id = i.id
                 AND CONCAT(u.first_name, ' ', u.last_name) LIKE ?
             )
+            AND i.created_at BETWEEN ? AND ?
             AND i.status = ?",
             [
                 $projectId,
                 "%{$request->get('issueName')}%",
                 "%{$request->get('developer')}%",
+                $request->get('min'),
+                $request->get('max'),
                 $request->get('issueStatus')
             ]
         );
