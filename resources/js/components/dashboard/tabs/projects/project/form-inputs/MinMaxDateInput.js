@@ -4,6 +4,10 @@ const MinMaxDateInput = ({ min, max }) => {
       <div className="w-1/2 pr-1">
         <div className="h-full bg-light-gray flex rounded-md">
           <div className="w-full flex items-center px-4">
+            <label
+              className="text-[13px] font-medium text-light-black" 
+              htmlFor={min.id}
+            >Min</label>
             <input
               className="w-full font-medium custom-date bg-light-gray text-light-black outline-none text-[13px]"
               type={min.type}
@@ -18,6 +22,10 @@ const MinMaxDateInput = ({ min, max }) => {
       <div className="w-1/2 pl-1">
         <div className="h-full bg-light-gray flex rounded-md">
           <div className="w-full flex items-center px-4">
+            <label
+              className="text-[13px] font-medium text-light-black" 
+              htmlFor={max.id}
+            >Min</label>
             <input
               className="w-full font-medium custom-date bg-light-gray text-light-black outline-none text-[13px]"
               type={max.type}
