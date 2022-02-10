@@ -32,17 +32,9 @@ After installing the requirements above, follow the steps below:
   > cd bug-tracker
 * Install the dependencies of laravel using this command and wait for the installation:
   > composer update
-* After the installation is done, check if the app is now running by starting the server:
-  > php artisan serve
-* After accessing it you should see a blank page, this is because we don't have scripts yet for our app, so in order for this to work close the server temporarily or open another terminal tab because we will need to install the ReactJS and dependencies using this command and wait for it:
-  > npm install
-* After installing the dependencies, we need to run laravel mix in order for us to compile the React code and populate the page with our actual app by using this command:
-  > npm run watch
-* After compiling the app, you can now start the server again and now you'll see the actual app by accessing the url below:
-  > http://127.0.0.1:8000
-* After making the app up and running, we need to setup the database so that we can now use it properly.
+* After the installation is done, we need to setup the database so that we can now use it properly.
   * Create a ***.env*** file if it doesn't exist yet in the root directory.
-  * Copy all the contents from ***.env.sample*** file and paste into the ***.env*** file.
+  * Copy all the contents from ***.env.sample*** file and paste it into the ***.env*** file.
   * After that, we need to change our configuration for our database but before that, we need to create a database first.
   * Go to your favorite database management client such us MySQL Workbench or PhpMyAdmin or just mysql terminal and create a database there with any name you want.
   * Then add your database credentials here like this:
@@ -54,6 +46,17 @@ After installing the requirements above, follow the steps below:
     > DB_PASSWORD=database_password
 * After setting up our database, we need to migrate it by using this command:
   > php artisan migrate
-* After the migration, you can now check the app and use it.
+* You can now run the server using this command:
+  > php artisan serve
+* And access it:
+  > http://127.0.0.1:8000
+* After accessing it you may see an error page where it says you need to generate application key, if so run this command or just press "Generate app Key" button:
+  > php artisan key:generate
+* After accessing it again you should see a blank page, this is because we don't have scripts yet for our app, so in order for this to work close the server temporarily or open another terminal tab because we will need to install ReactJS and dependencies using this command and wait for it:
+  > npm install
+* After installing the dependencies, we need to run laravel mix in order for us to compile the React code and populate the page with our actual app by using this command:
+  > npm run watch
+* After compiling the app, you can now start the server again and now you'll see the actual app by accessing the url below:
+  > http://127.0.0.1:8000
 
-Enjoy the app. Happy Coding!.
+And that's it you can now use and enjoy the app. Happy Coding!.
