@@ -56,15 +56,15 @@ const Register = ({ onSwtichLoginTab }) => {
   }
 
   return (
-    <div>
-      <div className="bg-white w-[400px] shadow-md font-medium">
+    <div className="mx-2 w-full">
+      <div className="bg-white w-full shadow-md font-medium">
         <div className="h-[70px] w-full bg-purple flex justify-center items-center">
           <span className="text-[30px] text-white">Register Page</span>
         </div>
 
         <div className="pt-4 pb-6">
-          <div className="mb-2 flex justify-center">
-            <div className="w-[160px] mr-[15px]">
+          <div className="mb-2 flex justify-center px-5">
+            <div className="w-1/2 mr-2">
               <label className="inline-block w-full text-[12px]" htmlFor="name">Firstname</label>
               <input
                 className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
@@ -78,7 +78,7 @@ const Register = ({ onSwtichLoginTab }) => {
                 <span className="text-[12px] text-red">{errors.firstname}</span>
               )}
             </div>
-            <div className="w-[160px] ml-[15px]">
+            <div className="w-1/2 ml-2">
               <label className="inline-block w-full text-[12px] text-right" htmlFor="name">Lastname</label>
               <input
                 className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
@@ -93,10 +93,10 @@ const Register = ({ onSwtichLoginTab }) => {
               )}
             </div>
           </div>
-          <div className="w-fit m-auto mb-2">
+          <div className="w-full m-auto mb-2 px-5">
             <label className="text-[12px]" htmlFor="email">Email</label>
             <input
-              className="block bg-light-gray w-[350px] leading-[40px] rounded-md outline-none px-2 text-[15px]"
+              className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
               type="email"
               name="email"
               id="email"
@@ -107,10 +107,10 @@ const Register = ({ onSwtichLoginTab }) => {
               <span className="text-[12px] text-red">{errors.email}</span>
             )}
           </div>
-          <div className="w-fit m-auto mb-2">
+          <div className="w-full m-auto mb-2 px-5">
             <label className="text-[12px]" htmlFor="password">Password</label>
             <input
-              className="block bg-light-gray w-[350px] leading-[40px] rounded-md outline-none px-2 text-[15px]"
+              className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
               type="password"
               name="password"
               id="password"
@@ -121,10 +121,10 @@ const Register = ({ onSwtichLoginTab }) => {
               <span className="text-[12px] text-red">{errors.password}</span>
             )}
           </div>
-          <div className="w-fit m-auto">
+          <div className="w-full m-auto px-5">
             <label className="text-[12px]" htmlFor="confirm-password">Confirm Password</label>
             <input
-              className="block bg-light-gray w-[350px] leading-[40px] rounded-md outline-none px-2 text-[15px]"
+              className="block bg-light-gray w-full leading-[40px] rounded-md outline-none px-2 text-[15px]"
               type="password"
               name="confirm-password"
               id="confirm-password"
@@ -138,13 +138,15 @@ const Register = ({ onSwtichLoginTab }) => {
           <p className="text-center text-[12px] my-4">
             Already have an account? <button className="text-light-blue" onClick={onSwtichLoginTab}>Login</button>
           </p>
-
-          <button
-            className="m-auto flex justify-center items-center bg-purple w-[350px] h-[50px] rounded-md"
-            onClick={() => register()}
-          >
-            <span className="text-[18px] text-white">Submit</span>
-          </button>
+          
+          <div className="px-5">
+            <button
+              className="m-auto flex justify-center items-center bg-purple w-full h-[50px] rounded-md"
+              onClick={() => register()}
+            >
+              <span className="text-[18px] text-white">Submit</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
