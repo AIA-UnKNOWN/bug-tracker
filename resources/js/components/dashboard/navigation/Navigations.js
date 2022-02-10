@@ -5,24 +5,33 @@ import { updateUser } from '@reducers/userSlice';
 import { switchTab } from '@reducers/tabSlice';
 
 
-const Navigations = () => {
+const Navigations = ({ onClickTab }) => {
   const dispatch = useDispatch();
 
   const links = [
     {
       icon: faUser,
       name: 'Profile',
-      onSwitch: () => dispatch(switchTab({ currentTab: 'profile' }))
+      onSwitch: () => {
+        dispatch(switchTab({ currentTab: 'profile' }));
+        onClickTab();
+      }
     },
     {
       icon: faUsers,
       name: 'Friends',
-      onSwitch: () => dispatch(switchTab({ currentTab: 'friends' }))
+      onSwitch: () => {
+        dispatch(switchTab({ currentTab: 'friends' }));
+        onClickTab();
+      }
     },
     {
       icon: faProjectDiagram,
       name: 'Projects',
-      onSwitch: () => dispatch(switchTab({ currentTab: 'projects' }))
+      onSwitch: () => {
+        dispatch(switchTab({ currentTab: 'projects' }));
+        onClickTab();
+      }
     },
     {
       icon: faSignOutAlt,
