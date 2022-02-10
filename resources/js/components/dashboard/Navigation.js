@@ -4,7 +4,7 @@ import Navigations from './navigation/Navigations';
 
 const Navigation = ({ isSidebarOpen, onClickXMark }) => {
   return (
-    <div className={`flex flex-col absolute top-0 left-0 z-10 bg-white w-full h-screen ${isSidebarOpen ? '' : 'hidden'}`}>
+    <div className={`flex flex-col fixed top-0 left-0 z-10 bg-white w-full h-screen ${isSidebarOpen ? '' : 'hidden'}`}>
       <div
         className="rounded-full rotate-45 absolute top-3 left-3 w-[30px] h-[30px]"
         onClick={() => onClickXMark()}
