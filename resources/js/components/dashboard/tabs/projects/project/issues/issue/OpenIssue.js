@@ -9,7 +9,7 @@ const OpenIssue = ({ data, statuses, onIssueNameChange, onIssueStatusChange, onS
   const { issueId, issueName, issueStatus } = data;
 
   return (
-    <div className="w-[460px] mx-auto mb-3">
+    <div className="w-full mx-auto mb-3 px-2">
 
       <div className="w-full h-[40px] bg-light-gray mx-auto rounded-md mb-3">
         <div className="flex justify-between items-center w-full h-full px-4">

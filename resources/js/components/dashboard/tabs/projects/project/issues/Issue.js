@@ -20,7 +20,7 @@ const Issue = ({ issue }) => {
 
   return (
     <div
-      className="w-[500px] min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4"
+      className="w-full min-h-[110px] bg-white border-l-[5px] border-l-purple shadow-md mb-4"
       onKeyPress={e => {
         if (e.key === 'Enter') {
           updateIssue({ id: issue.id, issueName, assigneeId, issueStatus });
@@ -29,10 +29,10 @@ const Issue = ({ issue }) => {
         }
       }}
     >
-      <div className="w-full min-h-[110px] flex justify-between items-center py-4 px-8">
+      <div className="w-full min-h-[110px] flex justify-between items-center p-4">
         <div>
-          <p className="text-[17px] font-medium pr-8">{issueName}</p>
-          <span className="block text-[10px]">Date Issued: {dateIssued || 'N/A'}</span>
+          <p className="text-[14px] leading-4 font-medium pr-8">{issueName}</p>
+          <span className="block text-[9px] mt-2">Date Issued: {dateIssued || 'N/A'}</span>
         </div>
         <div className={`flex items-center h-[25px] ${issueStatus === 'open' ? 'bg-light-green' : 'bg-light-red'} px-2 rounded-full`}>
           <span className={`capitalize font-medium text-[12px] pr-2 ${issueStatus === 'open' ? 'text-dark-green' : 'text-dark-red'}`}>

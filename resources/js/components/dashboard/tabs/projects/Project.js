@@ -12,15 +12,15 @@ const Project = ({ id, onGoBack }) => {
   const { project } = useProject(id);
   
   return (
-    <div className="px-[50px] py-[30px] flex flex-col flex-1 h-screen">
-      <p className="text-[50px] font-medium mb-10">
+    <div className="px-2 flex flex-col flex-1 h-screen">
+      <p className="text-[50px] font-medium py-5 text-center">
         {project.name}
       </p>
 
       <div className="flex flex-1 flex-col">
         <div className="flex flex-1 flex-col">
           <div
-            className="w-[50px] h-[50px] bg-light-gray flex justify-center items-center text-[25px] rounded-[50%] cursor-pointer"
+            className="w-[50px] h-[50px] ml-5 bg-light-gray flex justify-center items-center text-[25px] rounded-[50%] cursor-pointer"
             onClick={() => onGoBack()}
           >
             <FontAwesomeIcon icon={faArrowLeft} />
