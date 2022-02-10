@@ -60,3 +60,15 @@ After installing the requirements above, follow the steps below:
   > http://127.0.0.1:8000
 
 And that's it you can now use and enjoy the app. Happy Coding!.
+
+## Production
+
+When in development mode, all compiled files such as Javascript and CSS are not yet optimized and minified. In order to deploy this on production, we need to run this command:
+> npm run build
+
+This command will generate minified and optimized version of the app so that you can use it in deployment.
+
+
+## Contributing
+
+If you want to contribute, reach me out or submit a pull request so that I can check the enhancements made by our great contributors. Thank you!
