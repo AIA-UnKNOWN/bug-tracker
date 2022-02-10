@@ -28,13 +28,13 @@ const FriendsList = ({ data }) => {
                 alt={`${friend.name}'s profile picture`}
               />
             </div>
-            <div className="ml-8 grow">
+            <div className="ml-4 grow">
               <div>
-                <p className="font-semibold text-[25px]">{friend.name}</p>
-                <p className="font-medium text-[15px]">Software Developer</p>
+                <p className="font-semibold text-[20px]">{friend.name}</p>
+                <p className="font-medium text-[13px]">Software Developer</p>
                 
                 {friend.is_friend !== undefined && !!friend.is_friend === false && (
-                  <div className="flex justify-end">
+                  <div className="flex justify-end mt-4">
                     <button
                       className="w-[100px] h-[30px] bg-purple text-white text-[15px] font-medium rounded-md"
                       onClick={() => addFriend(friend.id)}

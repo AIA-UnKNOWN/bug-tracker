@@ -18,7 +18,7 @@ const FriendRequests = ({ data }) => {
 
         <div
           key={friendRequest.id}
-          className="flex items-center w-[500px] h-[150px] border-l-[5px] border-purple shadow-md mb-4 px-8"
+          className="flex items-center w-full h-[150px] border-l-[5px] border-purple shadow-md mb-4 px-8"
         >
           <div className="flex items-center flex-1">
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">
@@ -28,18 +28,18 @@ const FriendRequests = ({ data }) => {
                 alt={`${friendRequest.name}'s profile picture`}
               />
             </div>
-            <div className="ml-8 grow">
+            <div className="ml-4 grow">
               <div>
-                <p className="font-semibold text-[25px]">{friendRequest.name}</p>
-                <p className="font-medium text-[15px] -mt-1">Software Developer</p>
+                <p className="font-semibold text-[20px] leading-[23px]">{friendRequest.name}</p>
+                <p className="font-medium text-[13px] mt-1">Software Developer</p>
               </div>
               <div className="flex justify-end w-full mt-3">
                 <button
-                  className="flex justify-center items-center w-[100px] h-[30px] rounded-md bg-purple text-white font-medium"
+                  className="flex justify-center items-center text-[13px] w-[80px] h-[30px] rounded-md bg-purple text-white font-medium"
                   onClick={() => acceptFriendRequest(friendRequest.id)}
                 >Accept</button>
                 <button
-                  className="flex justify-center items-center w-[100px] h-[30px] rounded-md bg-white border border-purple text-purple font-medium ml-4"
+                  className="flex justify-center items-center text-[13px] w-[80px] h-[30px] rounded-md bg-white border border-purple text-purple font-medium ml-2"
                   onClick={() => rejectFriendRequest(friendRequest.id)}
                 >Reject</button>
               </div>
