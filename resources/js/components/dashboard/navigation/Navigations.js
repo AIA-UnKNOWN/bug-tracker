@@ -70,10 +70,10 @@ const Navigations = ({ onClickTab }) => {
 
   return (
     <div className="grow">
-      <nav className="py-[20px]">
+      <nav className="py-[20px] px-4">
         {links.map(link => (
           <div
-            className="flex items-center w-[260px] h-[50px] m-auto mb-[10px] hover:bg-light-gray rounded-lg cursor-pointer"
+            className="flex items-center w-full h-[50px] mb-[10px] hover:bg-light-gray rounded-lg cursor-pointer"
             key={link.name}
             onClick={link.onSwitch}
           >
