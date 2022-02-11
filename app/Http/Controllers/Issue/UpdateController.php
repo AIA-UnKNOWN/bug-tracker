@@ -12,7 +12,6 @@ class UpdateController extends Controller
     {
         $issue = Issue::find($id);
         $issue->name = $request->get('issueName');
-        $issue->assignee_id = $request->get('assigneeId');
         $issue->status = $request->get('issueStatus');
         $issue->save();
 

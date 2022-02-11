@@ -5,7 +5,6 @@ const useIssue = issue => {
   const statuses = ['closed', 'open'];
   const dateIssued = new Date(issue.created_at).toLocaleString();
   const [issueName, setIssueName] = useState('');
-  const [assigneeId, setAssigneeId] = useState(0);
   const [issueStatus, setIssueStatus] = useState(statuses[1]);
   const [newIssueStatus, setNewIssueStatus] = useState('');
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -13,7 +12,6 @@ const useIssue = issue => {
   
   useEffect(() => {
     setIssueName(issue.name);
-    setAssigneeId(issue.assignee_id);
     setIssueStatus(issue.status);
     setNewIssueStatus(issue.status);
   }, []);
@@ -38,8 +36,6 @@ const useIssue = issue => {
     dateIssued,
     issueName,
     setIssueName,
-    assigneeId,
-    setAssigneeId,
     issueStatus,
     setIssueStatus,
     isCollapsed,
