@@ -26,7 +26,7 @@ const Project = ({ id, onGoBack }) => {
             <FontAwesomeIcon icon={faArrowLeft} />
           </div>
 
-          <div className="flex justify-evenly flex-wrap">
+          <div className="flex lg:flex-col lg:items-center justify-evenly flex-wrap">
             <SearchIssue projectId={id} />
             <AddIssue projectId={id} />
           </div>
