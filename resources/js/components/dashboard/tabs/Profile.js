@@ -14,8 +14,8 @@ const Profile = () => {
       </p>
       
       <div>
-        <div className="flex flex-col py-10 px-5 justify-center border-l-[5px] border-l-purple shadow-lg">
-          <div className="relative w-[200px] h-[200px] rounded-[50%] ml-14 mb-5">
+        <div className="flex flex-col py-10 px-5 justify-center items-center border-l-[5px] border-l-purple shadow-lg">
+          <div className="relative w-[200px] h-[200px] rounded-[50%] mb-5">
             <img
               className="w-full h-full object-cover rounded-[50%]"
               src={user.profilePicture ?? defaultPicture}
