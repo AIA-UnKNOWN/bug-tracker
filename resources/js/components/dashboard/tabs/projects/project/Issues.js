@@ -12,7 +12,7 @@ const Issues = ({ projectId }) => {
   );
 
   return (
-    <div>
+    <div className="md:w-[500px] md:mx-auto">
       {issues.map(issue => (
         <Issue
           key={issue.id}

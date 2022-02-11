@@ -32,7 +32,7 @@ const Project = ({ id, onGoBack }) => {
           </div>
 
           <div className="border border-y-gray border-x-white my-[40px] py-2">
-            <span className="font-medium text-[25px]">Issues</span>
+            <span className="font-medium text-[25px] md:text-center md:block">Issues</span>
           </div>
 
           <Issues projectId={project.id} />

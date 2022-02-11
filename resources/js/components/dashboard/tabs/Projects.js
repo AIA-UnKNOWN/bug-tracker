@@ -27,7 +27,7 @@ const Projects = () =>  {
 
       <AddProject />
 
-      <div className="flex flex-col flex-1 mt-[40px]">
+      <div className="flex flex-col flex-1 mt-[40px] md:w-[500px] md:mx-auto">
 
         {projects.length !== 0 ? (
 
