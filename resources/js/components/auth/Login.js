@@ -69,7 +69,7 @@ const Login = ({ onSwitchRegisterTab }) => {
   }
 
   return (
-    <div className="mx-2 w-full">
+    <div className="mx-2 w-full md:w-[400px]">
       {loginError.length > 0 && (
         <div className="bg-light-red h-[60px] flex justify-center items-center rounded-sm mb-4">
           <span className="text-dark-red font-medium text-[15px]">{loginError}</span>
