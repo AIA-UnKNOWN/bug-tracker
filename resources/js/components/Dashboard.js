@@ -10,9 +10,9 @@ const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="flex relative">
+    <div className="flex relative lg:static">
       <div
-        className="w-[30px] h-[30px] bg-white shadow-md rounded-md fixed z-10 top-3 left-3 flex justify-center items-center"
+        className="w-[30px] h-[30px] bg-white shadow-md rounded-md fixed z-10 top-3 left-3 flex justify-center items-center lg:hidden"
         onClick={() => setIsSidebarOpen(true)}
       >
         <FontAwesomeIcon icon={faBars} />
