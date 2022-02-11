@@ -18,7 +18,7 @@ const FriendRequests = ({ data }) => {
 
         <div
           key={friendRequest.id}
-          className="flex items-center w-full h-[150px] border-l-[5px] border-purple shadow-md mb-4 px-8"
+          className="flex items-center w-full md:w-[500px] h-[150px] border-l-[5px] border-purple shadow-md mb-4 md:mx-auto px-8"
         >
           <div className="flex items-center flex-1">
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">

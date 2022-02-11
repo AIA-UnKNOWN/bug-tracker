@@ -18,7 +18,7 @@ const FriendsList = ({ data }) => {
 
         <div
           key={friend.id}
-          className="flex items-center w-full h-[150px] border-l-[5px] border-purple shadow-md mb-4 px-4"
+          className="flex items-center w-full md:w-[500px] h-[150px] border-l-[5px] border-purple shadow-md mb-4 md:mx-auto px-4"
         >
           <div className="flex items-center w-full">
             <div className="w-[90px] h-[90px] overflow-hidden rounded-full">

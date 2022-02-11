@@ -8,7 +8,7 @@ const SearchFriend = () => {
   const { searchKey, setSearchKey, search } = useSearchFriend();
 
   return (
-    <div className="w-full shadow-md p-[20px]">
+    <div className="w-full md:w-[500px] md:mx-auto shadow-md p-[20px]">
 
       <div className="w-full h-[40px] bg-light-gray mx-auto rounded-md mb-3">
         <div className="flex justify-between items-center w-full h-full px-4">
