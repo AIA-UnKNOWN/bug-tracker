@@ -1,22 +1,15 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '@reducers/userSlice';
 
-import { updateUser, authenticate } from '@reducers/userSlice';
-
-import AuthPage from './components/auth/AuthPage';
-import Dashboard from './components/Dashboard';
-
-
-const App = () => {
-  const user = useSelector(state => state.user.user);
-  const isAuthenticated = user.isAuthenticated;
+const useApp = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     if (token) getCurrentUser(token);
   }, []);
-  
+
   const getCurrentUser = token => {
     fetch('/api/user', {
       method: 'GET',
@@ -47,15 +40,7 @@ const App = () => {
       .catch(error => sessionStorage.clear());
   }
 
-  if (!isAuthenticated) return (
-    <div className="flex justify-center items-center h-screen w-screen">
-      <AuthPage />
-    </div>
-  );
-
-  return (
-    <Dashboard />
-  );
+  return { getCurrentUser };
 }
 
-export default App;
+export default useApp;
