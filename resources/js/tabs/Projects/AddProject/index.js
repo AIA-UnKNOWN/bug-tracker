@@ -1,7 +1,7 @@
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 
 import useAddProject from './hook';
-import Input from '@tabs/Projects/Project/form-inputs/Input';
+import Input from '@common/form-inputs/Input';
 
 
 const AddProject = () => {

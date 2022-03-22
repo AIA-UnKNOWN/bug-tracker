@@ -3,9 +3,9 @@ import { faBug, faUser, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import useSearchIssue from './hook';
 
-import Input from '../form-inputs/Input';
-import MinMaxDateInput from '../form-inputs/MinMaxDateInput';
-import StatusInput from '../form-inputs/StatusInput';
+import Input from '@common/form-inputs/Input';
+import MinMaxDateInput from '@common/form-inputs/MinMaxDateInput';
+import StatusInput from '@common/form-inputs/StatusInput';
 
 
 const SearchIssue = ({ projectId }) => {

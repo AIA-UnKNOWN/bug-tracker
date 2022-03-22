@@ -2,7 +2,7 @@ import { faBug } from '@fortawesome/free-solid-svg-icons';
 
 import useAddIssue from './hook';
 
-import Input from '../form-inputs/Input';
+import Input from '@common/form-inputs/Input';
 
 
 const AddIssue = ({ projectId }) => {
