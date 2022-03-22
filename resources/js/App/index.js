@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import AuthPage from '../components/auth/AuthPage';
-import Dashboard from '../components/Dashboard';
+import AuthPage from '@pages/AuthPage';
+import Dashboard from '@pages/Dashboard';
 
 const App = () => {
   const isAuthenticated = useSelector(state => state.user.user.isAuthenticated);
