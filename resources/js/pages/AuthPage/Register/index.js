@@ -1,59 +1,7 @@
-import { useState } from 'react';
-
+import useRegister from './hook';
 
 const Register = ({ onSwtichLoginTab }) => {
-  const [inputs, setInputs] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  const [errors, setErrors] = useState({});
-
-  const validate = callback => {
-    const formErrors = {};
-    const suffixMessage = 'field is required';
-
-    if (inputs.firstname === '') formErrors.firstname = `Firstname ${suffixMessage}`;
-    if (inputs.lastname === '') formErrors.lastname = `Lastname ${suffixMessage}`;
-    if (inputs.email === '') formErrors.email = `Email ${suffixMessage}`;
-    const validEmailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (inputs.email !== '' && !validEmailFormat.test(inputs.email)) formErrors.email = `Please enter a valid email`;
-    if (inputs.password === '') formErrors.password = `Password ${suffixMessage}`;
-    if (inputs.password !== '' && inputs.password.length < 8) formErrors.password = `Password is too short`;
-    if (inputs.password !== inputs.confirmPassword) formErrors.password = `Password does not match`;
-    
-    setErrors(formErrors);
-    callback(Object.keys(formErrors).length > 0);
-  }
-
-  const register = () => {
-    validate(errors => {
-      if (errors) return;
-
-      fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
-        },
-        body: JSON.stringify({
-          firstname: inputs.firstname,
-          lastname: inputs.lastname,
-          email: inputs.email,
-          password: inputs.password,
-          password_confirmation: inputs.confirmPassword
-        })
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.message === 'registered') onSwtichLoginTab();
-        })
-        .catch(error => console.log(error));
-    });
-  }
+  const { inputs, setInputs, errors, register, registerButton } = useRegister(onSwtichLoginTab);
 
   return (
     <div className="mx-2 w-full md:w-[400px]">
@@ -144,7 +92,9 @@ const Register = ({ onSwtichLoginTab }) => {
               className="m-auto flex justify-center items-center bg-purple w-full h-[50px] rounded-md"
               onClick={() => register()}
             >
-              <span className="text-[18px] text-white">Submit</span>
+              <span className="text-[18px] text-white">
+                {registerButton}
+              </span>
             </button>
           </div>
         </div>
