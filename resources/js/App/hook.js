@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '@reducers/userSlice';
+import Cookies from 'js-cookie';
 
 const useApp = () => {
+  const token = Cookies.get('token');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
     if (token) getCurrentUser(token);
   }, []);
 
@@ -21,6 +22,7 @@ const useApp = () => {
       }
     })
       .then(response => {
+        console.log(response)
         if (!response.ok) return;
         return response.json();
       })
@@ -37,7 +39,14 @@ const useApp = () => {
           }
         }));
       })
-      .catch(error => sessionStorage.clear());
+      .catch(error => clearCookies());
+  }
+
+  const clearCookies = () => {
+    const cookies = Cookies.get();
+    cookies.forEach(cookie => {
+      Cookies.remove(cookie);
+    });
   }
 
   return { getCurrentUser };
