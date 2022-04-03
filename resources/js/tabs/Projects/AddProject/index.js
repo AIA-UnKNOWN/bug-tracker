@@ -5,7 +5,7 @@ import Input from '@common/form-inputs/Input';
 
 
 const AddProject = () => {
-  const { name, setName, addProject } = useAddProject();
+  const { name, setName, addProject, errorMessage } = useAddProject();
 
   return (
     <div className="w-full md:w-[500px] md:mx-auto">
@@ -21,6 +21,9 @@ const AddProject = () => {
             value={name}
             onChange={e => setName(e.target.value)}
           />
+          {errorMessage && (
+            <span className="block text-[12px] text-red ml-1 mb-2">Project name is required</span>
+          )}
         </div>
         <button
           className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-3"

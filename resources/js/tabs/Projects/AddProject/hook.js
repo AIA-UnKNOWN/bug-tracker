@@ -6,8 +6,18 @@ import useProjects from '@tabs/Projects/hook';
 const useAddProject = () => {
   const { getProjects } = useProjects();
   const [name, setName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const validate = () => {
+    let error = '';
+    if (name === '')
+      error = 'Project name is required';
+    setErrorMessage(error);
+    return error === '';
+  }
 
   const addProject = async () => {
+    if (!validate()) return;
     const response = await fetch('/api/projects/add', {
       method: 'POST',
       headers: {
@@ -21,7 +31,7 @@ const useAddProject = () => {
     if (data.message === 'project created') getProjects();
   }
 
-  return { name, setName, addProject };
+  return { name, setName, addProject, errorMessage };
 }
 
 export default useAddProject;
