@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '@reducers/userSlice';
+import Cookies from 'js-cookie';
 
 const useLogin = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const useLogin = () => {
         setLoginButton('Login');
         return;
       };
-      sessionStorage.setItem('token', data.token);
+      Cookies.set('token', data.token, { expires: 7 });
       dispatch(updateUser({
         user: {
           id: data.user.id,
