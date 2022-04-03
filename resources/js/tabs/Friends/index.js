@@ -1,26 +1,8 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import useFriends from './hook';
 import SearchFriend from './SearchFriend';
-import FriendsList from './FriendsList';
-import FriendRequests from './FriendRequests';
-
 
 const Friends = () => {
-  const friends = useSelector(state => state.friends.friends);
-  const friendRequests = useSelector(state => state.friends.friendRequests);
-  const tabs = ['all friends', 'friend requests'];
-  const [currentTab, setCurrentTab] = useState(tabs[0]);
-
-  const renderPage = tab => {
-    switch (tab) {
-      case tabs[1]:
-        return (<FriendRequests data={friendRequests} />);
-        break;
-      default:
-        return (<FriendsList data={friends} />);
-    }
-  }
+  const { friends, friendRequests, tabs, currentTab, setCurrentTab, renderPage } = useFriends();
   
   return (
     <div className="flex flex-col min-h-screen px-2 pb-2">
