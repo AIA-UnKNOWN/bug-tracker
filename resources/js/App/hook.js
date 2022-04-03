@@ -12,8 +12,38 @@ const useApp = () => {
     if (token) getCurrentUser(token);
   }, [isAuthenticated]);
 
-  const getCurrentUser = token => {
-    fetch('/api/user', {
+  // const getCurrentUser = token => {
+  //   fetch('/api/user', {
+  //     method: 'GET',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       Authorization: `Bearer ${token}`,
+  //       'Content-Type': 'application/json',
+  //       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
+  //     }
+  //   })
+  //     .then(response => {
+  //       if (!response.ok) return;
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       if (!data) return;
+  //       dispatch(updateUser({
+  //         user: {
+  //           id: data.user.id,
+  //           email: data.user.email,
+  //           firstname: data.user.first_name,
+  //           lastname: data.user.last_name,
+  //           profilePicture: data.user.profile_picture,
+  //           isAuthenticated: true
+  //         }
+  //       }));
+  //     })
+  //     .catch(error => clearCookies());
+  // }
+
+  const getCurrentUser = async token => {
+    const response = await fetch('/api/user', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -21,25 +51,20 @@ const useApp = () => {
         'Content-Type': 'application/json',
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       }
-    })
-      .then(response => {
-        if (!response.ok) return;
-        return response.json();
-      })
-      .then(data => {
-        if (!data) return;
-        dispatch(updateUser({
-          user: {
-            id: data.user.id,
-            email: data.user.email,
-            firstname: data.user.first_name,
-            lastname: data.user.last_name,
-            profilePicture: data.user.profile_picture,
-            isAuthenticated: true
-          }
-        }));
-      })
-      .catch(error => clearCookies());
+    });
+    if (!response.ok) return clearCookies();
+    const data = await response.json();
+    if (!data) return;
+    dispatch(updateUser({
+      user: {
+        id: data.user.id,
+        email: data.user.email,
+        firstname: data.user.first_name,
+        lastname: data.user.last_name,
+        profilePicture: data.user.profile_picture,
+        isAuthenticated: true
+      }
+    }));
   }
 
   const clearCookies = () => {
