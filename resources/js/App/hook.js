@@ -42,7 +42,7 @@ const useApp = () => {
   }
 
   const clearCookies = () => {
-    const cookies = Cookies.get();
+    const cookies = Object.keys(Cookies.get());
     cookies.forEach(cookie => {
       Cookies.remove(cookie);
     });
