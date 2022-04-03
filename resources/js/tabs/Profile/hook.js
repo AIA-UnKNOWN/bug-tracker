@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { updateProfilePicture } from '@reducers/userSlice';
-
+import Cookies from 'js-cookie';
 
 const useProfile = () => {
   const user = useSelector(state => state.user.user);
@@ -24,7 +24,7 @@ const useProfile = () => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       },
       body: JSON.stringify({

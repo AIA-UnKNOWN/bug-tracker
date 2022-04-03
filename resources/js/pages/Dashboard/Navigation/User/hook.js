@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 import { updateProfilePicture } from '@reducers/userSlice';
 
 
@@ -17,7 +17,7 @@ const useUser = () => {
     const response = await fetch(`/api/user/${user.id}/profile-picture`, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const data = await response.json();
