@@ -6,7 +6,7 @@ import Input from '@common/form-inputs/Input';
 
 
 const AddIssue = ({ projectId }) => {
-  const { name, setName, addIssue } = useAddIssue(projectId);
+  const { name, setName, addIssue, errorMessage } = useAddIssue(projectId);
 
   return (
     <div className="w-[500px] mt-[40px]">
@@ -23,6 +23,11 @@ const AddIssue = ({ projectId }) => {
             onChange={e => setName(e.target.value)}
           />
         </div>
+        {errorMessage && (
+          <span className="block text-[12px] text-red ml-1">
+            {errorMessage}
+          </span>
+        )}
         <button
           className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-3"
           onClick={() => addIssue()}
