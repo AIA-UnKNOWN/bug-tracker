@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 import { setFriends } from '@reducers/friendsSlice';
 
 
@@ -13,7 +13,7 @@ const useSearchFriend = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const results = await response.json();

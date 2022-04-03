@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 import { setFriendRequests } from '@reducers/friendsSlice';
 
 
@@ -17,7 +17,7 @@ const useFriendRequests = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const friendRequests = await response.json();
@@ -29,7 +29,7 @@ const useFriendRequests = () => {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       }
     });
@@ -41,7 +41,7 @@ const useFriendRequests = () => {
     const response = await fetch(`/api/friends/${friendId}/reject`, {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       }
     });
