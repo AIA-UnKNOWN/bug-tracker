@@ -39,7 +39,10 @@ const Navigations = ({ onClickTab }) => {
     {
       icon: faSignOutAlt,
       name: 'Logout',
-      onSwitch: () => logout(Cookies.get('token'))
+      onSwitch: () => {
+        if (confirm('Are you sure you want to logout?'))
+          logout(Cookies.get('token'));
+      }
     }
   ];
 
