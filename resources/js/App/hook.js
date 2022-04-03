@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '@reducers/userSlice';
 import Cookies from 'js-cookie';
 
 const useApp = () => {
   const token = Cookies.get('token');
+  const isAuthenticated = useSelector(state => state.user.user.isAuthenticated);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (token) getCurrentUser(token);
-  }, []);
+  }, [isAuthenticated]);
 
   const getCurrentUser = token => {
     fetch('/api/user', {
