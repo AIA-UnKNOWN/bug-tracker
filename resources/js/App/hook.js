@@ -22,7 +22,6 @@ const useApp = () => {
       }
     })
       .then(response => {
-        console.log(response)
         if (!response.ok) return;
         return response.json();
       })
