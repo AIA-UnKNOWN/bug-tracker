@@ -1,11 +1,14 @@
+import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUsers, faProjectDiagram, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
+import useApp from '@App/hook';
 import { updateUser } from '@reducers/userSlice';
 import { switchTab } from '@reducers/tabSlice';
 
 
 const Navigations = ({ onClickTab }) => {
+  const { clearCookies } = useApp();
   const dispatch = useDispatch();
 
   const links = [
@@ -36,7 +39,7 @@ const Navigations = ({ onClickTab }) => {
     {
       icon: faSignOutAlt,
       name: 'Logout',
-      onSwitch: () => logout(sessionStorage.getItem('token'))
+      onSwitch: () => logout(Cookies.get('token'))
     }
   ];
 
@@ -53,7 +56,7 @@ const Navigations = ({ onClickTab }) => {
       .then(response => response.json())
       .then(data => {
         if (data.message === 'logged out') {
-          sessionStorage.clear();
+          clearCookies();
           dispatch(updateUser({
             user: {
               id: 0,

@@ -48,7 +48,7 @@ const useApp = () => {
     });
   }
 
-  return { getCurrentUser };
+  return { getCurrentUser, clearCookies };
 }
 
 export default useApp;

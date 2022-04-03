@@ -15,6 +15,7 @@ const path = require('path');
 mix.js('resources/js/index.js', 'public/js').react();
 mix.postCss('resources/css/index.css', 'public/css', [require('tailwindcss')]);
 mix.alias({
+  '@App': path.join(__dirname, 'resources/js/App'),
   '@reducers': path.join(__dirname, 'resources/js/reducers'),
   '@pages': path.join(__dirname, 'resources/js/pages'),
   '@tabs': path.join(__dirname, 'resources/js/tabs'),
