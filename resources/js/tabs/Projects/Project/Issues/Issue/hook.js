@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 
 const useIssue = issue => {
@@ -22,7 +23,7 @@ const useIssue = issue => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       },
       body: JSON.stringify({ issueName, assigneeId, issueStatus })

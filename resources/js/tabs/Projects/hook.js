@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 import { setProjects } from '@reducers/projectsSlice';
 
 
@@ -19,7 +19,7 @@ const useProjects = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const projects = await response.json();

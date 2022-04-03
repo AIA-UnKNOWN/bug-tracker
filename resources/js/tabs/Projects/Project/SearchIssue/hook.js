@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 import { setIssues } from '@reducers/issuesSlice';
 
 
@@ -36,7 +36,7 @@ const useSearchIssue = projectId => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const results = await response.json();

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Cookies from 'js-cookie';
 import useProjects from '@tabs/Projects/hook';
 
 
@@ -12,7 +12,7 @@ const useAddProject = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       },
       body: JSON.stringify({ projectName: name })

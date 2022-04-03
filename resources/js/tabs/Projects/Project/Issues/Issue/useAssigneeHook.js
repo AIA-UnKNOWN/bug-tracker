@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 
 const useAssignee = (issueId) => {
@@ -20,7 +21,7 @@ const useAssignee = (issueId) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const data = await response.json();
@@ -32,7 +33,7 @@ const useAssignee = (issueId) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const data = await response.json();
@@ -44,7 +45,7 @@ const useAssignee = (issueId) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       },
       body: JSON.stringify({ userId })
@@ -58,7 +59,7 @@ const useAssignee = (issueId) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+        Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
       }
     });

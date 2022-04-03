@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import Cookies from 'js-cookie';
 import { setIssues } from '@reducers/issuesSlice';
 
 
@@ -17,7 +17,7 @@ const useIssues = projectId => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const issues = await response.json();

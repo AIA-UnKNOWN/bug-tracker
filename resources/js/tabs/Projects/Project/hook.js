@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
 
 const useProject = id => {
@@ -13,7 +14,7 @@ const useProject = id => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+        Authorization: `Bearer ${Cookies.get('token')}`
       }
     });
     const project = await response.json();
