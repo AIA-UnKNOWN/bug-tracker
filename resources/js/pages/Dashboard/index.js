@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import useDashboard from './hook';
 import Navigation from './Navigation';
 import Tabs from './Tabs';
 
 const Dashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { isSidebarOpen, setIsSidebarOpen } = useDashboard();
 
   return (
     <div className="flex relative lg:static">

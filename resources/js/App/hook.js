@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '@reducers/userSlice';
 import Cookies from 'js-cookie';
+import { updateUser } from '@reducers/userSlice';
 
 const useApp = () => {
   const token = Cookies.get('token');
