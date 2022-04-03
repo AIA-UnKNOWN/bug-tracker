@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '@reducers/userSlice';
 import Cookies from 'js-cookie';
 
 const useLogin = () => {
+  const abortController = new AbortController();
   const dispatch = useDispatch();
   const [loginButton, setLoginButton] = useState('Login');
   const [inputs, setInputs] = useState({
@@ -12,6 +13,12 @@ const useLogin = () => {
   });
   const [errors, setErrors] = useState({});
   const [loginError, setLoginError] = useState('');
+
+  useEffect(() => {
+    return () => {
+      abortController.abort();
+    }
+  }, []);
 
   const validate = callback => {
     const formErrors = {};
@@ -42,7 +49,8 @@ const useLogin = () => {
         body: JSON.stringify({
           email: inputs.email,
           password: inputs.password
-        })
+        }),
+        signal: abortController.signal
       })
       if (!response.ok) return;
       const data = await response.json();
