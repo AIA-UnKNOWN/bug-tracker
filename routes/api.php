@@ -57,6 +57,9 @@ Route::prefix('/project')->group(function () {
     Route::put('/{id}/update', Project\UpdateController::class)
         ->middleware('auth:sanctum')
         ->name('update-project');
+    Route::delete('/{id}/delete', Project\DeleteController::class)
+        ->middleware('auth:sanctum')
+        ->name('delete-project');
     Route::post('/{projectId}/add', Issue\AddController::class)
         ->middleware('auth:sanctum')
         ->name('add-issue');
