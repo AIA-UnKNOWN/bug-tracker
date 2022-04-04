@@ -7,7 +7,7 @@ const ProjectInfoField = ({ project }) => {
     saveButton, removeButton,
     isCollapsed, setIsCollapsed,
     projectName, handleProjectNameChanges,
-    update
+    update, remove
   } = useProjectInfoField(project);
 
   return (
@@ -35,6 +35,7 @@ const ProjectInfoField = ({ project }) => {
           </button>
           <button
             className="bg-dark-red w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-1"
+            onClick={remove}
           >
             {removeButton}
           </button>

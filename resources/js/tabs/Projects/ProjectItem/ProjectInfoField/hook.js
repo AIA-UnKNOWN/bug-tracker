@@ -35,11 +35,27 @@ const useProjectInfoField = project => {
     setSaveButton('Saved!');
   }
 
+  const remove = async () => {
+    setRemoveButton('Removing...');
+    const response = await fetch(`/api/project/${project.id}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${Cookies.get('token')}`,
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
+      }
+    });
+    if (!response.ok) return;
+    getProjects();
+    setRemoveButton('Removed!');
+  }
+
   return {
     saveButton, removeButton,
     isCollapsed, setIsCollapsed,
     projectName, handleProjectNameChanges,
-    update
+    update, remove
   }
 }
 
