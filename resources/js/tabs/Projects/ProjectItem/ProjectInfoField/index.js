@@ -3,7 +3,12 @@ import { faPen, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import useProjectInfoField from './hook';
 
 const ProjectInfoField = ({ project }) => {
-  const { isCollapsed, setIsCollapsed } = useProjectInfoField();
+  const {
+    saveButton, removeButton,
+    isCollapsed, setIsCollapsed,
+    projectName, handleProjectNameChanges,
+    update
+  } = useProjectInfoField(project);
 
   return (
     <div>
@@ -14,8 +19,8 @@ const ProjectInfoField = ({ project }) => {
               <input
                 className="flex flex-1 bg-light-gray outline-none custom-placeholder"
                 type="text"
-                value={project.name}
-                onChange={e => console.log(e.target.value)}
+                value={projectName}
+                onChange={handleProjectNameChanges}
               />
               <div className="w-[30px] h-[30px] flex justify-center items-center ml-2">
                 <FontAwesomeIcon icon={faPen} color="#4F4F4F" />
@@ -24,13 +29,14 @@ const ProjectInfoField = ({ project }) => {
           </div>
           <button
             className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md"
+            onClick={update}
           >
-            Save
+            {saveButton}
           </button>
           <button
             className="bg-dark-red w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-1"
           >
-            Remove
+            {removeButton}
           </button>
         </div>
       )}
