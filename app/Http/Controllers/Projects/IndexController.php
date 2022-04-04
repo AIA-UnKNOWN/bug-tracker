@@ -17,12 +17,12 @@ class IndexController extends Controller
                 p.id,
                 p.name,
                 (SELECT count(*) FROM issues i
-                WHERE i.project_id = p.id) AS issues
+                WHERE (i.project_id = p.id AND i.status = 'open')) AS issues
             FROM projects p
             WHERE p.user_id = ?
             OR EXISTS (
                 SELECT * FROM issues i
-                WHERE i.project_id = p.id
+                WHERE (i.project_id = p.id AND i.status = 'open')
                 AND EXISTS (
                     SELECT * FROM issue_assignees ia
                     WHERE ia.issue_id = i.id
