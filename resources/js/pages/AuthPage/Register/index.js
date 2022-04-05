@@ -4,7 +4,7 @@ const Register = ({ onSwtichLoginTab }) => {
   const { inputs, setInputs, errors, register, registerButton } = useRegister(onSwtichLoginTab);
 
   return (
-    <div className="mx-2 w-full md:w-[400px]">
+    <div className="mx-2 w-full max-w-[400px]">
       <div className="bg-white w-full shadow-md font-medium">
         <div className="h-[70px] w-full bg-purple flex justify-center items-center">
           <span className="text-[30px] text-white">Register Page</span>
