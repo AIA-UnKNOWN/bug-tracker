@@ -12,7 +12,7 @@ const SearchIssue = ({ projectId }) => {
   const { form, setForm, formErrors, runSearch } = useSearchIssue(projectId);
 
   return (
-    <div className="w-full md:w-[500px] mt-[20px]">
+    <div className="w-full max-w-[500px] mt-[20px]">
       {Object.keys(formErrors).length > 0 && (
         <div className="bg-light-red p-[20px] rounded-md mb-3">
           <ul>
