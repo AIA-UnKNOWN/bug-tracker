@@ -7,6 +7,7 @@ const useAddProject = () => {
   const { getProjects } = useProjects();
   const [name, setName] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [addButtonText, setAddButtonText] = useState('Add');
 
   const validate = () => {
     let error = '';
@@ -18,6 +19,7 @@ const useAddProject = () => {
 
   const addProject = async () => {
     if (!validate()) return;
+    setAddButtonText('Adding...');
     const response = await fetch('/api/projects/add', {
       method: 'POST',
       headers: {
@@ -28,10 +30,13 @@ const useAddProject = () => {
       body: JSON.stringify({ projectName: name })
     });
     const data = await response.json();
-    if (data.message === 'project created') getProjects();
+    if (data.message === 'project created')
+      getProjects();
+    setName('');
+    setAddButtonText('Add');
   }
 
-  return { name, setName, addProject, errorMessage };
+  return { name, setName, addProject, errorMessage, addButtonText };
 }
 
 export default useAddProject;

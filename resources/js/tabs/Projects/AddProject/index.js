@@ -5,7 +5,7 @@ import Input from '@common/form-inputs/Input';
 
 
 const AddProject = () => {
-  const { name, setName, addProject, errorMessage } = useAddProject();
+  const { name, setName, addProject, errorMessage, addButtonText } = useAddProject();
 
   return (
     <div className="w-full md:w-[500px] md:mx-auto">
@@ -28,7 +28,9 @@ const AddProject = () => {
         <button
           className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-3"
           onClick={() => addProject()}
-        >Add</button>
+        >
+          {addButtonText}
+        </button>
       </div>
     </div>
   );
