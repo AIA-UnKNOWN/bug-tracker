@@ -7,8 +7,10 @@ import { setFriends } from '@reducers/friendsSlice';
 const useSearchFriend = () => {
   const dispatch = useDispatch();
   const [searchKey, setSearchKey] = useState('');
+  const [searchButtonText, setSearchButtonText] = useState('Search');
 
   const search = async () => {
+    setSearchButtonText('Searching...');
     const response = await fetch(`/api/friends/search?developer=${searchKey}`, {
       method: 'GET',
       headers: {
@@ -18,9 +20,10 @@ const useSearchFriend = () => {
     });
     const results = await response.json();
     dispatch(setFriends({ friends: results }));
+    setSearchButtonText('Search');
   }
   
-  return { searchKey, setSearchKey, search };
+  return { searchKey, setSearchKey, search, searchButtonText };
 }
 
 export default useSearchFriend;

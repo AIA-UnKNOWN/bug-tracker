@@ -5,7 +5,7 @@ import useSearchFriend from './hook';
 
 
 const SearchFriend = () => {
-  const { searchKey, setSearchKey, search } = useSearchFriend();
+  const { searchKey, setSearchKey, search, searchButtonText } = useSearchFriend();
 
   return (
     <div className="w-full md:w-[500px] md:mx-auto shadow-md p-[20px]">
@@ -30,7 +30,9 @@ const SearchFriend = () => {
       <button
         className="bg-purple w-full h-[50px] text-[18px] text-white font-medium rounded-md mt-3"
         onClick={() => search()}
-      >Search</button>
+      >
+        {searchButtonText}
+      </button>
     </div>
   );
 }
