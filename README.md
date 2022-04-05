@@ -2,7 +2,7 @@
 
 This **Bug Tracker** app is built for developers who want a simple and fast bug tracking system in their daily work. It also enables them to team up with their developers friends to create amazing projects and track issues with it easily.
 
-![Bug Tracker]()
+![Bug Tracker](https://aia-unknown.github.io/Portfolio/images/bug-tracker.png)
 
 
 ## Setup
