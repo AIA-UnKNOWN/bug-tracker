@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import { setFriends } from '@reducers/friendsSlice';
@@ -6,12 +6,14 @@ import { setFriends } from '@reducers/friendsSlice';
 
 const useFriendsList = () => {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getFriends();
   }, []);
 
   const getFriends = async () => {
+    setIsLoading(true);
     const response = await fetch('/api/friends', {
       method: 'GET',
       headers: {
@@ -21,9 +23,10 @@ const useFriendsList = () => {
     });
     const friends = await response.json();
     dispatch(setFriends({ friends }));
+    setIsLoading(false);
   }
 
-  return { getFriends };
+  return { getFriends, isLoading };
 }
 
 export default useFriendsList;
