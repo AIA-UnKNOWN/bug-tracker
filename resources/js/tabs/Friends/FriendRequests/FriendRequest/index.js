@@ -1,7 +1,7 @@
 import useFriendRequest from './hook';
 
 const FriendRequest = ({ friendRequest }) => {
-  const { defaultPicture, acceptFriendRequest, rejectFriendRequest } = useFriendRequest();
+  const { defaultPicture, acceptButtonText, rejectButtonText, acceptFriendRequest, rejectFriendRequest } = useFriendRequest();
 
   return (
     <div
@@ -25,11 +25,15 @@ const FriendRequest = ({ friendRequest }) => {
             <button
               className="flex justify-center items-center text-[13px] w-[80px] h-[30px] rounded-md bg-purple text-white font-medium"
               onClick={() => acceptFriendRequest(friendRequest.id)}
-            >Accept</button>
+            >
+              {acceptButtonText}
+            </button>
             <button
               className="flex justify-center items-center text-[13px] w-[80px] h-[30px] rounded-md bg-white border border-purple text-purple font-medium ml-2"
               onClick={() => rejectFriendRequest(friendRequest.id)}
-            >Reject</button>
+            >
+              {rejectButtonText}
+            </button>
           </div>
         </div>
       </div>
