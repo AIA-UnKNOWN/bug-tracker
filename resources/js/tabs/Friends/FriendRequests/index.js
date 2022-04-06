@@ -1,8 +1,13 @@
 import useFriendRequests from './hook';
 import FriendRequest from './FriendRequest';
+import FetchLoading from '@animations/FetchLoading';
 
 const FriendRequests = ({ data }) => {
-  useFriendRequests();
+  const { isLoading } = useFriendRequests();
+
+  if (isLoading) return (
+    <FetchLoading />
+  );
 
   if (data.length === 0) return (
     <div className="flex flex-col flex-1 justify-center items-center bg-light-gray">
