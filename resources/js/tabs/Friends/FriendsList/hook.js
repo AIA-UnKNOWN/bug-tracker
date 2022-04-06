@@ -6,7 +6,6 @@ import { setFriends } from '@reducers/friendsSlice';
 
 const useFriendsList = () => {
   const dispatch = useDispatch();
-  const defaultPicture = "https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png";
 
   useEffect(() => {
     getFriends();
@@ -24,21 +23,7 @@ const useFriendsList = () => {
     dispatch(setFriends({ friends }));
   }
 
-  const addFriend = async (userId) => {
-    const response = await fetch('/api/friends/add', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookies.get('token')}`,
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf_token"]').content
-      },
-      body: JSON.stringify({ userId })
-    });
-    const data = await response.json();
-    if (data.message === 'added') return;
-  }
-
-  return { defaultPicture, getFriends, addFriend };
+  return { getFriends };
 }
 
 export default useFriendsList;
